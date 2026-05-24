@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiSearch, FiFilter, FiPackage, FiHeart, FiThermometer, FiShield } from 'react-icons/fi';
+import { FiSearch, FiFilter, FiPackage} from 'react-icons/fi';
 import Breadcrumb from '../components/Breadcrumb';
 import Button from '../components/Button';
 import '../styles/pages/MedicineSearchPage.css';

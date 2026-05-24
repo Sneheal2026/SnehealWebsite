@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiTarget, FiHeart, FiTrendingUp, FiGlobe, FiUsers, FiAward } from 'react-icons/fi';
+import { FiTarget, FiHeart, FiUsers, FiAward } from 'react-icons/fi';
 import Breadcrumb from '../components/Breadcrumb';
 import SectionHeader from '../components/SectionHeader';
 import { FeatureCard } from '../components/Cards';

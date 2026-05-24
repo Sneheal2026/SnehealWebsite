@@ -63,16 +63,16 @@ const Footer = () => {
           <div className="footer-column">
             <h4 className="footer-heading">Follow Us</h4>
             <div className="footer-social">
-              <a href="#" className="footer-social-link" aria-label="Facebook">
+              <a href="/" className="footer-social-link" aria-label="Facebook">
                 <FiFacebook size={20} />
               </a>
-              <a href="#" className="footer-social-link" aria-label="Twitter">
+              <a href="/" className="footer-social-link" aria-label="Twitter">
                 <FiTwitter size={20} />
               </a>
-              <a href="#" className="footer-social-link" aria-label="Instagram">
+              <a href="/" className="footer-social-link" aria-label="Instagram">
                 <FiInstagram size={20} />
               </a>
-              <a href="#" className="footer-social-link" aria-label="LinkedIn">
+              <a href="/" className="footer-social-link" aria-label="LinkedIn">
                 <FiLinkedin size={20} />
               </a>
             </div>
@@ -85,8 +85,8 @@ const Footer = () => {
             © {currentYear} Sneheal. All rights reserved.
           </p>
           <div className="footer-bottom-links">
-            <a href="#" className="footer-bottom-link">Privacy Policy</a>
-            <a href="#" className="footer-bottom-link">Terms of Service</a>
+            <a href="/" className="footer-bottom-link">Privacy Policy</a>
+            <a href="/" className="footer-bottom-link">Terms of Service</a>
           </div>
         </div>
       </div>
