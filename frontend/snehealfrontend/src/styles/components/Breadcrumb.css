@@ -1,0 +1,42 @@
+/* ========================================
+   Breadcrumb Component Styles
+   ======================================== */
+
+.breadcrumb {
+  margin-bottom: var(--spacing-xl);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.breadcrumb-link {
+  color: var(--color-text-light);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumb-separator {
+  color: var(--color-text-lighter);
+  font-size: var(--font-size-md);
+  line-height: 1;
+}
+
+.breadcrumb-current {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}

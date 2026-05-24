@@ -1,0 +1,356 @@
+/* ========================================
+   Medicine Search Page Styles
+   ======================================== */
+
+.medicine-page {
+  min-height: 100vh;
+}
+
+/* Search Header */
+.search-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  padding: var(--spacing-3xl) 0;
+  text-align: center;
+  color: var(--color-text-white);
+}
+
+.search-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-white);
+  margin-bottom: var(--spacing-md);
+}
+
+.search-subtitle {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.search-bar-container {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--spacing-lg);
+  color: var(--color-text-light);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) 50px;
+  font-size: var(--font-size-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-white);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-xl);
+}
+
+.search-input::placeholder {
+  color: var(--color-text-lighter);
+}
+
+/* Category Tabs */
+.category-section {
+  background-color: var(--color-bg-white);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--spacing-lg) 0;
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.category-tabs {
+  display: flex;
+  gap: var(--spacing-md);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-xs);
+}
+
+.category-tab {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-medium);
+  background-color: var(--color-bg-light);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.category-tab:hover {
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+}
+
+.category-tab.active {
+  color: var(--color-text-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Medicine Section Layout */
+.medicine-section {
+  padding: var(--spacing-2xl) 0;
+}
+
+.medicine-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--spacing-2xl);
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+  background-color: var(--color-bg-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+  position: sticky;
+  top: 140px;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.filter-header h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+}
+
+.filter-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.filter-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-md);
+}
+
+.filter-options {
+  list-style: none;
+}
+
+.filter-option {
+  margin-bottom: var(--spacing-sm);
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-medium);
+  transition: color var(--transition-fast);
+}
+
+.filter-label:hover {
+  color: var(--color-primary);
+}
+
+.filter-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+/* Medicine Content */
+.medicine-content {
+  min-height: 600px;
+}
+
+.medicine-results-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.results-count {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+}
+
+/* Medicine Grid */
+.medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.medicine-card {
+  background-color: var(--color-bg-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.medicine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.medicine-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+}
+
+.medicine-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+}
+
+.in-stock-badge,
+.out-of-stock-badge {
+  padding: 4px 12px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.in-stock-badge {
+  background-color: rgba(20, 184, 138, 0.1);
+  color: var(--color-secondary);
+}
+
+.out-of-stock-badge {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+.medicine-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.medicine-generic {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+  font-style: italic;
+}
+
+.medicine-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-medium);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-lg);
+  flex: 1;
+}
+
+.medicine-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.medicine-price {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: var(--spacing-4xl) var(--spacing-xl);
+  color: var(--color-text-light);
+}
+
+.no-results svg {
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.3;
+}
+
+.no-results h3 {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-medium);
+  margin-bottom: var(--spacing-md);
+}
+
+.no-results p {
+  font-size: var(--font-size-base);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .medicine-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .search-input {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 45px;
+  }
+
+  .search-icon {
+    left: var(--spacing-md);
+  }
+
+  .category-section {
+    top: 60px;
+  }
+
+  .medicine-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-sidebar {
+    padding: var(--spacing-lg);
+  }
+}

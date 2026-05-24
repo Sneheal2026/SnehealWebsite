@@ -1,0 +1,51 @@
+/* ========================================
+   SectionHeader Component Styles
+   ======================================== */
+
+.section-header {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-header.align-center {
+  text-align: center;
+}
+
+.section-header.align-left {
+  text-align: left;
+}
+
+.section-header-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-header-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  line-height: var(--line-height-relaxed);
+  max-width: 700px;
+}
+
+.section-header.align-center .section-header-subtitle {
+  margin: 0 auto;
+}
+
+.section-header.light .section-header-title {
+  color: var(--color-text-white);
+}
+
+.section-header.light .section-header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .section-header-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .section-header-subtitle {
+    font-size: var(--font-size-base);
+  }
+}
