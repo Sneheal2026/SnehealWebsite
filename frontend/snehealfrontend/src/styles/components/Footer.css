@@ -22,11 +22,12 @@
   margin-bottom: var(--spacing-3xl);
 }
 
-.footer-logo {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-white);
+.footer-logo-image {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
   margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-md);
 }
 
 .footer-tagline {

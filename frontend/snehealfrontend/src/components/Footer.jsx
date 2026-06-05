@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="footer-grid">
           {/* Column 1: Brand */}
           <div className="footer-column">
-            <h3 className="footer-logo">Sneheal</h3>
+            <img src="/Sneheal-Logo.jpeg" alt="Sneheal Logo" className="footer-logo-image" />
             <p className="footer-tagline">
               Delivering healthcare to your doorstep. Trusted medicine delivery platform for a healthier tomorrow.
             </p>

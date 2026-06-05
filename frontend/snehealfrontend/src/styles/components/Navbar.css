@@ -23,14 +23,14 @@
 .navbar-logo a {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--spacing-xs);
 }
 
-.logo-text {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  letter-spacing: -0.5px;
+.logo-image {
+  height: 68px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-tagline {

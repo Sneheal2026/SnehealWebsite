@@ -28,8 +28,8 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-logo">
           <Link to="/" onClick={closeMenu}>
-            <span className="logo-text">Sneheal</span>
-            <span className="logo-tagline">Healthcare Delivered</span>
+            <img src="/Sneheal-Logoo.png" alt="Sneheal Logo" className="logo-image" />
+            <span className="logo-tagline">Sneheal</span>
           </Link>
         </div>
 
