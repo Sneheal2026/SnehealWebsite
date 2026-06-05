@@ -32,6 +32,7 @@ const Navbar = () => {
             <span className="logo-tagline">Sneheal</span>
           </Link>
         </div>
+        
 
         <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle menu">
           {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
