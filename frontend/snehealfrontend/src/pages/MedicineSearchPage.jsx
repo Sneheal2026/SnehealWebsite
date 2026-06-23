@@ -25,6 +25,7 @@ const MedicineSearchPage = () => {
     { id: 'devices', label: 'Medical Devices' }
   ];
 
+  
   const filters = [
     {
       title: 'Category',
