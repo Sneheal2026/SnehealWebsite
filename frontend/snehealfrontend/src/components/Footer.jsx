@@ -50,11 +50,11 @@ const Footer = () => {
               </li>
               <li>
                 <FiPhone className="footer-icon" />
-                <a href="tel:+1234567890" className="footer-contact-link">+1 (234) 567-890</a>
+                <a href="tel:+917517434102" className="footer-contact-link">+91 7517434102</a>
               </li>
               <li>
                 <FiMapPin className="footer-icon" />
-                <span>123 Healthcare Ave, Medical City</span>
+                <span>123 Solapur, Maharashtra</span>
               </li>
             </ul>
           </div>
