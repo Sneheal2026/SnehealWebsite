@@ -13,6 +13,10 @@ const MedicineSearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  // Conversion rate and formatter for INR display (adjust rate as needed)
+  const USD_TO_INR = 83;
+  const formatINR = (usd) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(usd * USD_TO_INR);
+
   const categories = [
     { id: 'all', label: 'All Medicines' },
     { id: 'prescription', label: 'Prescription' },
@@ -21,6 +25,7 @@ const MedicineSearchPage = () => {
     { id: 'devices', label: 'Medical Devices' }
   ];
 
+  
   const filters = [
     {
       title: 'Category',
@@ -32,7 +37,14 @@ const MedicineSearchPage = () => {
     },
     {
       title: 'Price Range',
-      options: ['Under $10', '$10 - $25', '$25 - $50', '$50+']
+      options: (() => {
+        const rangesUSD = [[0,10],[10,25],[25,50],[50,Infinity]];
+        return rangesUSD.map(([min, max]) => {
+          if (max === Infinity) return `${formatINR(min)}+`;
+          if (min === 0) return `Under ${formatINR(max)}`;
+          return `${formatINR(min)} - ${formatINR(max)}`;
+        });
+      })()
     }
   ];
 
@@ -221,7 +233,7 @@ const MedicineSearchPage = () => {
                     <p className="medicine-description">{medicine.description}</p>
                     
                     <div className="medicine-footer">
-                      <div className="medicine-price">${medicine.price.toFixed(2)}</div>
+                      <div className="medicine-price">{formatINR(medicine.price)}</div>
                       <Button 
                         variant={medicine.inStock ? 'primary' : 'outline'} 
                         size="small"
