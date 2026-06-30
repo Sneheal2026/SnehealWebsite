@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/components/Cards.css';
 
 const FeatureCard = ({ icon, title, description }) => {
@@ -29,7 +30,11 @@ const ServiceCard = ({ icon, title, description, link }) => {
       <div className="service-card-icon">{icon}</div>
       <h3 className="service-card-title">{title}</h3>
       <p className="service-card-description">{description}</p>
-      {link && <a href={link.url} className="service-card-link">{link.text}</a>}
+      {link && (
+        link.url.startsWith('/') && !link.url.includes('#')
+          ? <Link to={link.url} className="service-card-link">{link.text}</Link>
+          : <a href={link.url} className="service-card-link">{link.text}</a>
+      )}
     </div>
   );
 };

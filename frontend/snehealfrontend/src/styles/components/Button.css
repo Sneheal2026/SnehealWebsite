@@ -12,7 +12,7 @@
   cursor: pointer;
   border: 2px solid transparent;
   text-align: center;
-  white-space: nowrap;
+  max-width: 100%;
 }
 
 .btn:disabled {
@@ -22,12 +22,12 @@
 
 /* Variants */
 .btn-primary {
-  background-color: var(--color-primary);
+  background: var(--gradient-green);
   color: var(--color-text-white);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-dark);
+  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-secondary) 100%);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -60,12 +60,12 @@
 }
 
 .btn-accent {
-  background-color: var(--color-accent);
+  background: var(--gradient-green);
   color: var(--color-text-white);
 }
 
 .btn-accent:hover:not(:disabled) {
-  background-color: var(--color-accent-dark);
+  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 100%);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FiPackage, FiUpload, FiTruck, FiMapPin, FiAlertCircle, FiShield, FiCheckCircle, FiThermometer } from 'react-icons/fi';
+import { FiPackage, FiUpload, FiUserCheck, FiMessageCircle, FiClock, FiShield, FiCheckCircle, FiMapPin } from 'react-icons/fi';
 import Breadcrumb from '../components/Breadcrumb';
 import SectionHeader from '../components/SectionHeader';
 import { ServiceCard, FeatureCard } from '../components/Cards';
 import Button from '../components/Button';
+import { SITE_INFO, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
 import '../styles/pages/ServicesPage.css';
 
 const ServicesPage = () => {
@@ -15,52 +15,52 @@ const ServicesPage = () => {
 
   const services = [
     {
-      icon: <FiPackage size={28} />,
-      title: 'Medicine Delivery',
-      description: 'Order prescription and over-the-counter medicines from verified pharmacies and get them delivered to your doorstep.',
-      link: { url: '/medicine-search', text: 'Browse Medicines →' }
+      icon: <FiClock size={28} />,
+      title: '10-Minute Medicine Delivery',
+      description: 'Order medicines and get them delivered in approximately 10 minutes — designed for tier 2 and tier 3 cities where other apps are too slow.',
+      link: { url: '/#download-app', text: 'Download App →' }
     },
     {
       icon: <FiUpload size={28} />,
       title: 'Prescription Upload',
-      description: 'Simply upload a photo of your prescription and we\'ll handle the rest. Our pharmacists will verify and process your order.',
-      link: { url: '/medicine-search', text: 'Upload Now →' }
+      description: 'Upload a photo of your prescription in the app. Our team and verified doctors process it so you can order the right medicines quickly.',
+      link: { url: '/#download-app', text: 'Upload Prescription →' }
     },
     {
-      icon: <FiTruck size={28} />,
-      title: 'Express Delivery',
-      description: 'Need medicines urgently? Our express delivery service ensures you receive your order within 2-4 hours.',
+      icon: <FiPackage size={28} />,
+      title: 'Medicine Ordering',
+      description: 'Search and order prescription and over-the-counter medicines from verified distributors and licensed pharmacy partners.',
+      link: { url: '/#download-app', text: 'Order Medicines →' }
+    },
+    {
+      icon: <FiUserCheck size={28} />,
+      title: 'Verified Doctor Review',
+      description: 'Licensed doctors review your medicines and patient needs, recommending proper healthcare and ensuring safe prescriptions.',
       link: { url: '/contact', text: 'Learn More →' }
     },
     {
-      icon: <FiMapPin size={28} />,
-      title: 'Nearby Pharmacy Support',
-      description: 'Find and connect with licensed pharmacies in your area. Compare prices and availability in real-time.',
-      link: { url: '/medicine-search', text: 'Find Pharmacies →' }
-    },
-    {
-      icon: <FiAlertCircle size={28} />,
-      title: 'Emergency Medicines',
-      description: '24/7 emergency medicine delivery service for critical healthcare needs. Because emergencies don\'t wait.',
-      link: { url: '/contact', text: 'Emergency Contact →' }
+      icon: <FiMessageCircle size={28} />,
+      title: 'Doctor Support On Demand',
+      description: 'Connect with verified doctors for any health-related query — get guidance and answers when you need them.',
+      link: { url: '/contact', text: 'Get Support →' }
     }
   ];
 
   const qualityFeatures = [
     {
       icon: <FiShield size={32} />,
-      title: 'Verified Pharmacies',
-      description: 'All partner pharmacies undergo strict verification and licensing checks before joining our platform.'
+      title: 'Verified Distributors',
+      description: `Partners like ${VERIFIED_DISTRIBUTORS[0].name} ensure every medicine is genuine and properly sourced.`
     },
     {
       icon: <FiCheckCircle size={32} />,
-      title: 'Quality Checks',
-      description: 'Multiple quality assurance steps ensure you receive only genuine, unexpired medicines.'
+      title: 'Doctor-Verified Orders',
+      description: 'Prescriptions are reviewed by licensed doctors before medicines are dispensed and delivered.'
     },
     {
-      icon: <FiThermometer size={32} />,
-      title: 'Cold Chain Delivery',
-      description: 'Temperature-controlled packaging for sensitive medicines that require specific storage conditions.'
+      icon: <FiMapPin size={32} />,
+      title: 'Built for Your City',
+      description: `Launched in ${SITE_INFO.launchCity}, focused on tier 2 and tier 3 cities that need faster healthcare.`
     }
   ];
 
@@ -70,22 +70,21 @@ const ServicesPage = () => {
         <Breadcrumb items={breadcrumbItems} />
       </div>
 
-      {/* Page Header */}
       <section className="services-header">
         <div className="container">
+          <span className="page-badge">Sneheal App Services</span>
           <h1 className="services-title">Our Services</h1>
           <p className="services-subtitle">
-            Comprehensive healthcare delivery services designed to make your life easier and healthier.
+            Fast medicine delivery, prescription upload, and verified doctor support — everything you need in one app.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="section">
         <div className="container">
           <SectionHeader
-            title="What We Offer"
-            subtitle="From regular medicines to emergency delivery, we've got you covered"
+            title="What Sneheal Offers"
+            subtitle="Healthcare services built for speed, trust, and tier 2 & 3 city needs"
           />
           <div className="services-grid">
             {services.map((service, index) => (
@@ -101,65 +100,57 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Quality Assurance Section */}
       <section className="section bg-light">
         <div className="container">
           <SectionHeader
-            title="How We Ensure Quality"
-            subtitle="Your health and safety are our top priorities"
+            title="How We Ensure Quality & Safety"
+            subtitle="Your health and trust are our highest priorities"
           />
           <div className="grid grid-3">
             {qualityFeatures.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-              />
+              <FeatureCard key={index} icon={feature.icon} title={feature.title} description={feature.description} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Additional Services Info */}
       <section className="section">
         <div className="container">
           <div className="services-info-grid">
             <div className="services-info-card">
-              <h3 className="info-card-title">For Patients</h3>
+              <h3 className="info-card-title">For Patients & Families</h3>
               <ul className="info-list">
-                <li>Easy medicine ordering and tracking</li>
-                <li>Prescription management and reminders</li>
-                <li>Family account management</li>
-                <li>24/7 customer support</li>
-                <li>Multiple payment options</li>
+                <li>10-minute medicine delivery in supported areas</li>
+                <li>Easy prescription upload and medicine search</li>
+                <li>Verified doctors review your medicines</li>
+                <li>On-demand doctor support for health queries</li>
+                <li>Family account management in the app</li>
               </ul>
             </div>
             <div className="services-info-card">
-              <h3 className="info-card-title">For Pharmacies</h3>
+              <h3 className="info-card-title">For Partners & Distributors</h3>
               <ul className="info-list">
-                <li>Expand your customer reach</li>
-                <li>Digital order management system</li>
-                <li>Real-time inventory tracking</li>
-                <li>Secure payment processing</li>
-                <li>Dedicated partner support</li>
+                <li>Join our verified distributor network</li>
+                <li>Reach customers in tier 2 & 3 cities</li>
+                <li>Digital order and inventory management</li>
+                <li>Transparent partnership with Sneheal</li>
+                <li>Dedicated partner support team</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2 className="cta-title">Need a Custom Healthcare Solution?</h2>
+            <h2 className="cta-title">Ready to Order Medicines in 10 Minutes?</h2>
             <p className="cta-subtitle">
-              We work with hospitals, clinics, and organizations to provide tailored medicine delivery services.
+              Download the Sneheal app or contact us to check availability in your city.
             </p>
-            <Link to="/contact">
-              <Button variant="accent" size="large">Get in Touch</Button>
-            </Link>
+            <a href="/#download-app">
+              <Button variant="accent" size="large">Download Sneheal App</Button>
+            </a>
           </div>
         </div>
       </section>

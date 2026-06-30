@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import { SITE_CONTACT, SITE_INFO } from '../config/siteInfo';
+import { scrollToTop } from '../utils/scroll';
 import '../styles/components/Footer.css';
+
+const FooterNavLink = ({ to, children }) => (
+  <Link to={to} className="footer-link" onClick={() => scrollToTop('smooth')}>
+    {children}
+  </Link>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,56 +18,51 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-grid">
-          {/* Column 1: Brand */}
           <div className="footer-column">
             <img src="/Sneheal-Logo.jpeg" alt="Sneheal Logo" className="footer-logo-image" />
             <p className="footer-tagline">
-              Delivering healthcare to your doorstep. Trusted medicine delivery platform for a healthier tomorrow.
+              {SITE_INFO.tagline} for tier 2 & tier 3 cities. Genuine medicines, prescription upload, and verified doctor support — launched {SITE_INFO.launchDate} from {SITE_INFO.launchCity}.
             </p>
           </div>
 
-          {/* Column 2: Quick Links */}
           <div className="footer-column">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              <li><Link to="/" className="footer-link">Home</Link></li>
-              <li><Link to="/about" className="footer-link">About Us</Link></li>
-              <li><Link to="/services" className="footer-link">Services</Link></li>
-              <li><Link to="/contact" className="footer-link">Contact</Link></li>
+              <li><FooterNavLink to="/">Home</FooterNavLink></li>
+              <li><FooterNavLink to="/about">About Us</FooterNavLink></li>
+              <li><FooterNavLink to="/services">Services</FooterNavLink></li>
+              <li><FooterNavLink to="/contact">Contact</FooterNavLink></li>
             </ul>
           </div>
 
-          {/* Column 3: Services */}
           <div className="footer-column">
-            <h4 className="footer-heading">Services</h4>
+            <h4 className="footer-heading">App Services</h4>
             <ul className="footer-links">
-              <li><Link to="/medicine-search" className="footer-link">Medicine Delivery</Link></li>
-              <li><Link to="/services" className="footer-link">Prescription Upload</Link></li>
-              <li><Link to="/services" className="footer-link">Emergency Medicines</Link></li>
-              <li><Link to="/services" className="footer-link">Health Products</Link></li>
+              <li><FooterNavLink to="/services">10-Min Delivery</FooterNavLink></li>
+              <li><FooterNavLink to="/services">Prescription Upload</FooterNavLink></li>
+              <li><FooterNavLink to="/services">Verified Doctors</FooterNavLink></li>
+              <li><FooterNavLink to="/services">Health Query Support</FooterNavLink></li>
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
           <div className="footer-column">
             <h4 className="footer-heading">Contact Us</h4>
             <ul className="footer-contact">
               <li>
                 <FiMail className="footer-icon" />
-                <a href="mailto:support@sneheal.com" className="footer-contact-link">support@sneheal.com</a>
+                <a href={`mailto:${SITE_CONTACT.email}`} className="footer-contact-link">{SITE_CONTACT.email}</a>
               </li>
               <li>
                 <FiPhone className="footer-icon" />
-                <a href="tel:+917517434102" className="footer-contact-link">+91 7517434102</a>
+                <a href={SITE_CONTACT.phoneHref} className="footer-contact-link">{SITE_CONTACT.phone}</a>
               </li>
               <li>
                 <FiMapPin className="footer-icon" />
-                <span>123 Solapur, Maharashtra</span>
+                <span>{SITE_CONTACT.address}</span>
               </li>
             </ul>
           </div>
 
-          {/* Column 5: Social Links */}
           <div className="footer-column">
             <h4 className="footer-heading">Follow Us</h4>
             <div className="footer-social">
@@ -79,14 +82,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="footer-bottom">
           <p className="footer-copyright">
             © {currentYear} Sneheal. All rights reserved.
           </p>
           <div className="footer-bottom-links">
-            <a href="/" className="footer-bottom-link">Privacy Policy</a>
-            <a href="/" className="footer-bottom-link">Terms of Service</a>
+            <Link to="/" className="footer-bottom-link" onClick={() => scrollToTop('smooth')}>Privacy Policy</Link>
+            <Link to="/" className="footer-bottom-link" onClick={() => scrollToTop('smooth')}>Terms of Service</Link>
           </div>
         </div>
       </div>

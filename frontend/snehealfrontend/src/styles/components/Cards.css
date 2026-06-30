@@ -109,7 +109,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-secondary-light), var(--color-secondary));
+  background: var(--gradient-green);
   border-radius: var(--radius-md);
   color: var(--color-text-white);
 }

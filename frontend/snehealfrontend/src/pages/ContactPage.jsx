@@ -3,6 +3,7 @@ import { FiMail, FiPhone, FiMapPin, FiClock, FiChevronDown } from 'react-icons/f
 import Breadcrumb from '../components/Breadcrumb';
 import { FormInput, FormTextarea, FormSelect } from '../components/FormInputs';
 import Button from '../components/Button';
+import { SITE_CONTACT, SITE_INFO } from '../config/siteInfo';
 import '../styles/pages/ContactPage.css';
 
 const ContactPage = () => {
@@ -34,32 +35,37 @@ const ContactPage = () => {
 
   const subjectOptions = [
     { value: 'general', label: 'General Inquiry' },
-    { value: 'support', label: 'Customer Support' },
-    { value: 'partnership', label: 'Partnership' },
-    { value: 'feedback', label: 'Feedback' },
-    { value: 'other', label: 'Other' }
+    { value: 'app', label: 'App Download / Support' },
+    { value: 'delivery', label: 'Medicine Delivery' },
+    { value: 'doctor', label: 'Doctor Consultation' },
+    { value: 'partnership', label: 'Partnership / Distributor' },
+    { value: 'feedback', label: 'Feedback' }
   ];
 
   const faqs = [
     {
-      question: 'How do I place an order?',
-      answer: 'You can place an order by visiting our Medicine Search page, searching for your required medicine, and following the checkout process.'
+      question: 'How fast is Sneheal medicine delivery?',
+      answer: 'Sneheal targets 10-minute medicine delivery in supported tier 2 and tier 3 city areas. Delivery time may vary slightly based on location and order volume.'
     },
     {
-      question: 'What are your delivery hours?',
-      answer: 'We offer 24/7 delivery services. Standard delivery is available from 8 AM to 10 PM, while emergency delivery is available round the clock.'
-    },
-    {
-      question: 'How can I upload my prescription?',
-      answer: 'During the ordering process, you\'ll find an option to upload your prescription. Simply take a clear photo and upload it through our platform.'
+      question: 'How do I upload a prescription?',
+      answer: 'Open the Sneheal app, go to the prescription upload section, take a clear photo of your prescription, and submit. Our team and verified doctors will verify it before processing your order.'
     },
     {
       question: 'Are the medicines genuine?',
-      answer: 'Absolutely! All our partner pharmacies are verified and licensed. We maintain strict quality checks to ensure you receive only genuine medicines.'
+      answer: 'Yes. Sneheal works with verified distributors including Baldawa Enterprises and licensed pharmacy partners. All medicines go through quality checks before delivery.'
     },
     {
-      question: 'How do I track my order?',
-      answer: 'Once your order is confirmed, you\'ll receive a tracking link via email and SMS. You can track your delivery in real-time.'
+      question: 'Can I talk to a doctor through Sneheal?',
+      answer: 'Yes. Verified doctors on Sneheal review your medicines, recommend proper healthcare, and are available to support you with health-related queries when needed.'
+    },
+    {
+      question: 'Which cities does Sneheal serve?',
+      answer: `Sneheal launched in ${SITE_INFO.launchDate} from ${SITE_INFO.launchCity}. We are expanding to more tier 2 and tier 3 cities. Contact us to check availability in your area.`
+    },
+    {
+      question: 'How do I download the Sneheal app?',
+      answer: 'Contact us via phone or email for app download links. We will guide you based on your device and city availability.'
     }
   ];
 
@@ -69,21 +75,18 @@ const ContactPage = () => {
         <Breadcrumb items={breadcrumbItems} />
       </div>
 
-      {/* Page Header */}
       <section className="contact-header">
         <div className="container">
           <h1 className="contact-title">Get in Touch</h1>
           <p className="contact-subtitle">
-            Have questions or need assistance? We're here to help you with anything you need.
+            Questions about medicine delivery, prescription upload, doctor support, or app download? We are here to help.
           </p>
         </div>
       </section>
 
-      {/* Contact Form Section */}
       <section className="section">
         <div className="container">
           <div className="contact-grid">
-            {/* Contact Form */}
             <div className="contact-form-wrapper">
               <h2 className="form-section-title">Send us a Message</h2>
               <form onSubmit={handleSubmit} className="contact-form">
@@ -93,7 +96,7 @@ const ContactPage = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Your full name"
                   required
                 />
                 <FormInput
@@ -102,7 +105,7 @@ const ContactPage = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="you@example.com"
                   required
                 />
                 <FormInput
@@ -111,7 +114,7 @@ const ContactPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+1 (234) 567-890"
+                  placeholder={SITE_CONTACT.phone}
                 />
                 <FormSelect
                   label="Subject"
@@ -126,7 +129,7 @@ const ContactPage = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="How can we help you?"
+                  placeholder="Tell us about your query — delivery area, prescription, doctor support, etc."
                   required
                 />
                 <Button type="submit" variant="primary" size="large" className="btn-full">
@@ -135,16 +138,15 @@ const ContactPage = () => {
               </form>
             </div>
 
-            {/* Company Info */}
             <div className="contact-info">
               <h2 className="info-section-title">Contact Information</h2>
-              
+
               <div className="info-cards">
                 <div className="info-card">
                   <FiMail className="info-icon" />
                   <div className="info-content">
                     <h3 className="info-title">Email</h3>
-                    <a href="mailto:support@sneheal.com" className="info-link">support@sneheal.com</a>
+                    <a href={`mailto:${SITE_CONTACT.email}`} className="info-link">{SITE_CONTACT.email}</a>
                   </div>
                 </div>
 
@@ -152,7 +154,7 @@ const ContactPage = () => {
                   <FiPhone className="info-icon" />
                   <div className="info-content">
                     <h3 className="info-title">Phone</h3>
-                    <a href="tel:+1234567890" className="info-link">+1 (234) 567-890</a>
+                    <a href={SITE_CONTACT.phoneHref} className="info-link">{SITE_CONTACT.phone}</a>
                   </div>
                 </div>
 
@@ -160,7 +162,7 @@ const ContactPage = () => {
                   <FiMapPin className="info-icon" />
                   <div className="info-content">
                     <h3 className="info-title">Address</h3>
-                    <p className="info-text">123 Healthcare Ave, Medical City, MC 12345</p>
+                    <p className="info-text">{SITE_CONTACT.address}</p>
                   </div>
                 </div>
 
@@ -168,34 +170,32 @@ const ContactPage = () => {
                   <FiClock className="info-icon" />
                   <div className="info-content">
                     <h3 className="info-title">Working Hours</h3>
-                    <p className="info-text">24/7 Customer Support Available</p>
+                    <p className="info-text">24/7 App & Delivery Support</p>
                     <p className="info-text">Office: Mon - Fri, 9 AM - 6 PM</p>
                   </div>
                 </div>
               </div>
 
               <div className="support-info">
-                <h3 className="support-title">Need Immediate Assistance?</h3>
+                <h3 className="support-title">Need Urgent Help?</h3>
                 <p className="support-text">
-                  For urgent queries or emergency medicine delivery, please call our 24/7 helpline.
+                  For urgent medicine delivery or doctor support queries, call our helpline directly.
                 </p>
-                <a href="tel:+1234567890" className="support-phone">+1 (234) 567-890</a>
+                <a href={SITE_CONTACT.phoneHref} className="support-phone">{SITE_CONTACT.phone}</a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Placeholder */}
       <section className="map-section">
         <div className="map-placeholder">
           <FiMapPin size={48} />
-          <h3>Map Integration Coming Soon</h3>
-          <p>We're working on integrating interactive maps to help you find nearby pharmacies.</p>
+          <h3>Our Office — {SITE_INFO.launchCity}</h3>
+          <p>{SITE_CONTACT.address}</p>
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="section bg-light">
         <div className="container">
           <h2 className="faq-section-title">Frequently Asked Questions</h2>

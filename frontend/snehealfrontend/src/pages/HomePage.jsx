@@ -1,271 +1,176 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiPackage, FiClock, FiShield, FiHeadphones, FiSearch, FiMapPin, FiHeart, FiUsers, FiStar, FiTrendingUp } from 'react-icons/fi';
+import { FaGooglePlay, FaApple } from 'react-icons/fa';
+import { FiClock, FiUpload, FiUserCheck, FiHeadphones, FiCheckCircle, FiSmartphone } from 'react-icons/fi';
 import Button from '../components/Button';
 import SectionHeader from '../components/SectionHeader';
-import { FeatureCard, TestimonialCard, StatCard } from '../components/Cards';
+import { FeatureCard, TestimonialCard } from '../components/Cards';
+import { SITE_INFO, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
 import '../styles/pages/HomePage.css';
 
 const HomePage = () => {
   const features = [
     {
-      icon: <FiPackage size={32} />,
-      title: 'Wide Medicine Range',
-      description: 'Access thousands of medicines and health products from verified pharmacies across the country.'
+      icon: <FiClock size={26} />,
+      title: '10-Min Delivery',
+      description: 'Fast doorstep delivery built for tier 2 & 3 cities.'
     },
     {
-      icon: <FiClock size={32} />,
-      title: 'Fast Delivery',
-      description: 'Get your medicines delivered within hours with our express delivery service.'
+      icon: <FiUpload size={26} />,
+      title: 'Prescription Upload',
+      description: 'Snap & upload — order medicines in seconds.'
     },
     {
-      icon: <FiShield size={32} />,
-      title: 'Verified Pharmacies',
-      description: 'All partner pharmacies are licensed and verified for quality assurance.'
+      icon: <FiUserCheck size={26} />,
+      title: 'Verified Doctors',
+      description: 'Doctors review medicines & recommend proper care.'
     },
     {
-      icon: <FiHeadphones size={32} />,
-      title: '24/7 Support',
-      description: 'Round-the-clock customer support to help you with orders and queries.'
+      icon: <FiHeadphones size={26} />,
+      title: 'Doctor Support',
+      description: 'Health query help from verified doctors, anytime.'
     }
   ];
 
   const howItWorks = [
-    {
-      step: '01',
-      icon: <FiSearch size={32} />,
-      title: 'Search & Upload',
-      description: 'Search for medicines or upload your prescription through our easy-to-use platform.'
-    },
-    {
-      step: '02',
-      icon: <FiMapPin size={32} />,
-      title: 'Choose Pharmacy',
-      description: 'Select from nearby verified pharmacies based on availability and pricing.'
-    },
-    {
-      step: '03',
-      icon: <FiPackage size={32} />,
-      title: 'Fast Delivery',
-      description: 'Receive your medicines at your doorstep with safe and secure delivery.'
-    }
-  ];
-
-  const platformFeatures = [
-    { icon: <FiHeart size={28} />, title: 'Health Records', description: 'Maintain digital health records and prescription history' },
-    { icon: <FiUsers size={28} />, title: 'Family Accounts', description: 'Manage medicines for your entire family in one place' },
-    { icon: <FiStar size={28} />, title: 'Reviews & Ratings', description: 'Read genuine reviews from verified customers' },
-    { icon: <FiTrendingUp size={28} />, title: 'Price Comparison', description: 'Compare prices across multiple pharmacies' },
-    { icon: <FiShield size={28} />, title: 'Secure Payments', description: 'Multiple secure payment options for your convenience' },
-    { icon: <FiClock size={28} />, title: 'Order Tracking', description: 'Real-time tracking of your medicine delivery' }
-  ];
-
-  const benefits = [
-    'Save time with home delivery of medicines',
-    'Access to verified and licensed pharmacies',
-    'Competitive pricing with transparent costs',
-    'Emergency medicine delivery available 24/7',
-    'Prescription management and reminders',
-    'Dedicated customer support team'
-  ];
-
-  const stats = [
-    { number: '10,000+', label: 'Orders Delivered' },
-    { number: '500+', label: 'Partner Pharmacies' },
-    { number: '24/7', label: 'Customer Support' },
-    { number: '98%', label: 'Customer Satisfaction' }
+    { step: '1', title: 'Search or Upload', desc: 'Find medicines or upload your prescription.' },
+    { step: '2', title: 'Doctor Checks', desc: 'Verified doctors review & guide your order.' },
+    { step: '3', title: '10-Min Delivery', desc: 'Genuine medicines delivered to your door.' }
   ];
 
   const testimonials = [
     {
-      quote: 'Sneheal has made it so much easier to manage my parents medications. The delivery is always on time and the service is excellent.',
-      author: 'Sarah Johnson',
-      role: 'Regular Customer'
+      quote: 'Other apps take hours in Solapur. Sneheal delivered in 10 minutes and the doctor confirmed the prescription.',
+      author: 'Rahul Kulkarni',
+      role: 'Solapur'
     },
     {
-      quote: 'As someone with a chronic condition, having reliable medicine delivery is crucial. Sneheal has been a lifesaver, literally.',
-      author: 'Michael Chen',
-      role: 'Healthcare Advocate'
-    },
-    {
-      quote: 'The prescription upload feature is fantastic. I just take a photo and my medicines are delivered within hours. Highly recommend!',
-      author: 'Priya Sharma',
-      role: 'Verified User'
+      quote: 'Prescription upload is easy and medicines are genuine. Doctor support when I had questions was excellent.',
+      author: 'Sneha Patil',
+      role: 'Regular User'
     }
   ];
 
   return (
     <div className="home-page">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="hero">
-        <div className="hero-container container">
-          <div className="hero-content">
-            <h1 className="hero-title">Healthcare Delivered to Your Doorstep</h1>
-            <p className="hero-subtitle">
-              Experience the future of healthcare with Sneheal. Get genuine medicines from verified pharmacies delivered fast, safe, and reliable. Because your health can't wait.
-            </p>
-            <div className="hero-buttons">
-              <Link to="/medicine-search">
-                <Button variant="primary" size="large">Explore Services</Button>
-              </Link>
-              <Link to="/about">
-                <Button variant="outline" size="large">Learn More</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Sneheal Section */}
-      <section className="section bg-light">
-        <div className="container">
-          <SectionHeader
-            title="Why Sneheal?"
-            subtitle="We're revolutionizing healthcare accessibility by bringing medicines directly to you, eliminating the hassle of pharmacy visits."
-          />
-          <div className="grid grid-4">
-            {features.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="section">
-        <div className="container">
-          <SectionHeader
-            title="How It Works"
-            subtitle="Getting your medicines has never been easier. Just three simple steps."
-          />
-          <div className="how-it-works-grid">
-            {howItWorks.map((step, index) => (
-              <div key={index} className="step-card">
-                <div className="step-number">{step.step}</div>
-                <div className="step-icon">{step.icon}</div>
-                <h3 className="step-title">{step.title}</h3>
-                <p className="step-description">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Platform Features Section */}
-      <section className="section bg-light">
-        <div className="container">
-          <SectionHeader
-            title="Platform Features"
-            subtitle="Everything you need for a seamless healthcare experience"
-          />
-          <div className="grid grid-3">
-            {platformFeatures.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="section">
-        <div className="container">
-          <div className="benefits-container">
-            <div className="benefits-content">
-              <SectionHeader
-                title="Benefits That Matter"
-                subtitle="We're committed to making healthcare accessible, affordable, and convenient for everyone."
-                align="left"
-              />
-              <ul className="benefits-list">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="benefit-item">
-                    <FiShield className="benefit-icon" />
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="benefits-visual">
-              <div className="benefits-illustration">
-                <FiHeart size={120} />
-                <p>Caring for your health, always</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="stats-section">
-        <div className="container">
-          <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <StatCard key={index} number={stat.number} label={stat.label} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="container">
-          <div className="cta-content">
-            <h2 className="cta-title">Ready to Experience Better Healthcare?</h2>
-            <p className="cta-subtitle">
-              Join thousands of users who trust Sneheal for their medicine delivery needs.
-            </p>
-            <Link to="/medicine-search">
-              <Button variant="accent" size="large">Start Ordering Now</Button>
+        <div className="container hero-inner">
+          <span className="hero-badge">Launched {SITE_INFO.launchDate} · {SITE_INFO.launchCity}</span>
+          <h1 className="hero-title">
+            Medicines in <span className="hero-highlight">10 Minutes</span>
+          </h1>
+          <p className="hero-subtitle">
+            India's medicine delivery app for tier 2 & 3 cities. Order, upload prescriptions, and get doctor-backed care — faster than the big apps.
+          </p>
+          <div className="hero-actions">
+            <a href="#download-app">
+              <Button variant="primary" size="large">Download App</Button>
+            </a>
+            <Link to="/services">
+              <Button variant="outline" size="large">Our Services</Button>
             </Link>
           </div>
+          <div className="hero-stats">
+            <div className="hero-stat"><strong>10 Min</strong><span>Delivery</span></div>
+            <div className="hero-stat"><strong>24/7</strong><span>Doctor Support</span></div>
+            <div className="hero-stat"><strong>100%</strong><span>Verified Supply</span></div>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="section">
+      {/* Features */}
+      <section className="home-section">
         <div className="container">
           <SectionHeader
-            title="What Our Users Say"
-            subtitle="Real stories from real people who trust Sneheal"
+            title="Everything in One App"
+            subtitle="Fast delivery, prescriptions, and doctor care — designed for your city."
           />
-          <div className="grid grid-3">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                role={testimonial.role}
-              />
+          <div className="grid grid-4 home-features">
+            {features.map((f, i) => (
+              <FeatureCard key={i} icon={f.icon} title={f.title} description={f.description} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Download Banner Section */}
-      <section className="download-section">
+      {/* How it works + Partners */}
+      <section className="home-section home-section--alt">
         <div className="container">
-          <div className="download-content">
-            <h2 className="download-title">Mobile App Coming Soon</h2>
-            <p className="download-subtitle">
-              Get Sneheal on your phone for an even better experience. Stay tuned!
-            </p>
-            <div className="download-buttons">
-              <button className="store-button" disabled>
-                <span>App Store</span>
-              </button>
-              <button className="store-button" disabled>
-                <span>Google Play</span>
-              </button>
+          <SectionHeader title="How It Works" subtitle="Three steps from prescription to doorstep." />
+          <div className="steps-row">
+            {howItWorks.map((s, i) => (
+              <div key={i} className="step-item">
+                <span className="step-badge">{s.step}</span>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="partners-strip">
+            <span className="partners-label">Verified partners</span>
+            <div className="partners-chips">
+              {VERIFIED_DISTRIBUTORS.map((p, i) => (
+                <span key={i} className="partner-chip">
+                  <FiCheckCircle size={14} /> {p.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="home-section">
+        <div className="container">
+          <SectionHeader title="Trusted Locally" subtitle="What users in tier 2 & 3 cities are saying." />
+          <div className="grid grid-2 home-testimonials">
+            {testimonials.map((t, i) => (
+              <TestimonialCard key={i} quote={t.quote} author={t.author} role={t.role} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Download */}
+      <section className="download-section" id="download-app">
+        <div className="container">
+          <div className="download-panel">
+            <div className="download-info">
+              <span className="download-eyebrow">Available Now</span>
+              <h2 className="download-title">Get the Sneheal App</h2>
+              <p className="download-desc">
+                Order medicines, upload prescriptions, and talk to verified doctors — launched {SITE_INFO.launchDate} from {SITE_INFO.launchCity}.
+              </p>
+              <div className="store-badges">
+                <a href="/contact" className="store-badge store-badge--play" aria-label="Get on Google Play">
+                  <FaGooglePlay className="store-badge-icon" />
+                  <span className="store-badge-text">
+                    <small>GET IT ON</small>
+                    Google Play
+                  </span>
+                </a>
+                <a href="/contact" className="store-badge store-badge--apple" aria-label="Download on App Store">
+                  <FaApple className="store-badge-icon" />
+                  <span className="store-badge-text">
+                    <small>Download on the</small>
+                    App Store
+                  </span>
+                </a>
+              </div>
+              <p className="download-hint">Contact us for download links & city availability.</p>
+            </div>
+            <div className="download-visual">
+              <div className="phone-frame">
+                <div className="phone-notch" />
+                <div className="phone-screen">
+                  <img src="/Sneheal-Logo.jpeg" alt="Sneheal app" className="phone-logo" />
+                  <p className="phone-app-name">Sneheal</p>
+                  <p className="phone-tagline">{SITE_INFO.tagline}</p>
+                  <div className="phone-pill"><FiSmartphone size={14} /> Download to start</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

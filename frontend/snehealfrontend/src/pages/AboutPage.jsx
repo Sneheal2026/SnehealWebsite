@@ -5,6 +5,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import SectionHeader from '../components/SectionHeader';
 import { FeatureCard } from '../components/Cards';
 import Button from '../components/Button';
+import { SITE_INFO, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
 import '../styles/pages/AboutPage.css';
 
 const AboutPage = () => {
@@ -16,46 +17,46 @@ const AboutPage = () => {
   const values = [
     {
       icon: <FiHeart size={32} />,
-      title: 'Patient-First Approach',
-      description: 'Every decision we make prioritizes patient health and wellbeing above all else.'
+      title: 'Patient-First',
+      description: 'Every feature — from 10-minute delivery to doctor consultations — puts patient health first.'
     },
     {
       icon: <FiTarget size={32} />,
-      title: 'Accessibility',
-      description: 'We believe healthcare should be accessible to everyone, regardless of location.'
+      title: 'Tier 2 & 3 Focus',
+      description: 'We build for cities where major apps are slow, unavailable, or simply do not serve well enough.'
     },
     {
       icon: <FiAward size={32} />,
-      title: 'Quality Assurance',
-      description: 'Only verified pharmacies and genuine medicines make it to our platform.'
+      title: 'Genuine Medicines',
+      description: 'Only verified distributors and licensed partners like Baldawa Enterprises supply our medicines.'
     },
     {
       icon: <FiUsers size={32} />,
-      title: 'Community Trust',
-      description: 'Building long-term relationships through transparency and reliability.'
+      title: 'Doctor-Backed Care',
+      description: 'Verified doctors review prescriptions, recommend proper healthcare, and answer your health queries.'
     }
   ];
 
   const timeline = [
     {
-      year: '2024',
-      title: 'Platform Launch',
-      description: 'Sneheal officially launched with 50 partner pharmacies in our first city.'
-    },
-    {
-      year: '2025',
-      title: 'Regional Expansion',
-      description: 'Expanded to 10 major cities with over 500 partner pharmacies.'
+      year: 'May 2026',
+      title: 'Official Launch',
+      description: `Sneheal launched in ${SITE_INFO.launchCity} — bringing 10-minute medicine delivery, prescription upload, and verified doctor support to tier 2 and tier 3 cities.`
     },
     {
       year: '2026',
-      title: 'Nationwide Coverage',
-      description: 'Achieved presence across all major cities with 24/7 delivery services.'
+      title: 'Verified Distribution Network',
+      description: 'Partnered with trusted distributors including Baldawa Enterprises and regional licensed pharmacies for genuine medicine supply.'
+    },
+    {
+      year: 'Next',
+      title: 'City Expansion',
+      description: 'Expanding across more tier 2 and tier 3 cities in Maharashtra and beyond, where fast healthcare delivery is needed most.'
     },
     {
       year: 'Future',
-      title: 'AI-Powered Health Assistant',
-      description: 'Launching intelligent health recommendations and automated prescription management.'
+      title: 'Smarter Healthcare',
+      description: 'Enhanced doctor consultations, family health management, and AI-assisted medicine and wellness guidance.'
     }
   ];
 
@@ -65,96 +66,105 @@ const AboutPage = () => {
         <Breadcrumb items={breadcrumbItems} />
       </div>
 
-      {/* Page Header */}
       <section className="about-header">
         <div className="container">
+          <span className="page-badge">Launched {SITE_INFO.launchDate}</span>
           <h1 className="about-title">About Sneheal</h1>
           <p className="about-subtitle">
-            We're on a mission to make healthcare accessible, affordable, and convenient for everyone.
+            Sneheal is a 10-minute medicine delivery app built for tier 2 and tier 3 cities — where major platforms take too long or do not reach customers properly.
           </p>
         </div>
       </section>
 
-      {/* Vision & Mission */}
       <section className="section">
         <div className="container">
           <div className="vision-mission-grid">
             <div className="vision-mission-card">
               <h2 className="vision-mission-title">Our Vision</h2>
               <p className="vision-mission-text">
-                A world where everyone has instant access to genuine medicines and quality healthcare services, regardless of their location or circumstances. We envision a future where technology bridges the gap between patients and healthcare providers.
+                A India where every city — not just metros — has access to fast, genuine medicine delivery and verified doctor support. We believe tier 2 and tier 3 cities deserve the same quality of healthcare technology as big cities.
               </p>
             </div>
             <div className="vision-mission-card">
               <h2 className="vision-mission-title">Our Mission</h2>
               <p className="vision-mission-text">
-                To revolutionize medicine delivery by creating a trusted platform that connects patients with verified pharmacies, ensuring fast, safe, and reliable access to healthcare products while maintaining the highest standards of quality and service.
+                To deliver medicines in 10 minutes, enable easy prescription uploads, and connect customers with verified doctors who review medicines and provide health guidance — all through one trusted app, starting from Solapur, Maharashtra.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Healthcare Accessibility Matters */}
       <section className="section bg-light">
         <div className="container">
           <SectionHeader
-            title="Why Healthcare Accessibility Matters"
-            subtitle="Millions of people face challenges accessing essential medicines daily. We're here to change that."
+            title="Why Tier 2 & Tier 3 Cities Need Sneheal"
+            subtitle="Major delivery apps often overlook smaller cities. Long wait times and unreliable service leave patients waiting when they need care most."
           />
           <div className="accessibility-content">
             <div className="accessibility-text">
               <p>
-                Healthcare accessibility is not just a convenience—it's a fundamental right. In many areas, people struggle to find nearby pharmacies, face long wait times, or lack access to essential medications. Sneheal addresses these challenges head-on.
+                In cities like Solapur and across tier 2 and tier 3 India, patients frequently wait hours for medicine delivery — or find that popular apps do not serve their area properly. Sneheal was built specifically to solve this problem.
               </p>
               <p>
-                By leveraging technology and building a network of verified pharmacies, we ensure that quality healthcare reaches every doorstep. Our platform eliminates geographical barriers, reduces wait times, and provides a seamless experience for patients and caregivers alike.
+                We combine 10-minute delivery, prescription upload, verified medicine distributors, and on-call doctor support into one platform. Our doctors check patient medicines, recommend proper healthcare, and are available whenever you have a health-related question.
               </p>
             </div>
             <div className="accessibility-stats">
               <div className="accessibility-stat">
-                <div className="stat-number">4.5B+</div>
-                <div className="stat-label">People lack access to essential medicines globally</div>
+                <div className="stat-number">10 Min</div>
+                <div className="stat-label">Target delivery time in supported areas</div>
               </div>
               <div className="accessibility-stat">
-                <div className="stat-number">50%</div>
-                <div className="stat-label">Patients don't take medicines as prescribed</div>
+                <div className="stat-number">100%</div>
+                <div className="stat-label">Verified distributors & licensed partners</div>
               </div>
               <div className="accessibility-stat">
                 <div className="stat-number">24/7</div>
-                <div className="stat-label">Health emergencies don't wait—and neither do we</div>
+                <div className="stat-label">Doctor support for health queries</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
       <section className="section">
         <div className="container">
           <SectionHeader
-            title="Our Core Values"
-            subtitle="The principles that guide everything we do"
+            title="Our Distribution Partners"
+            subtitle="Genuine medicines through verified supply chain partners"
           />
-          <div className="grid grid-4">
-            {values.map((value, index) => (
-              <FeatureCard
-                key={index}
-                icon={value.icon}
-                title={value.title}
-                description={value.description}
-              />
+          <div className="about-partners-grid">
+            {VERIFIED_DISTRIBUTORS.map((partner, index) => (
+              <div key={index} className="about-partner-card">
+                <h3 className="about-partner-name">{partner.name}</h3>
+                <p className="about-partner-role">{partner.role}</p>
+                <p className="about-partner-desc">{partner.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Roadmap Timeline */}
       <section className="section bg-light">
         <div className="container">
           <SectionHeader
-            title="Our Journey & Future Goals"
-            subtitle="From startup to nationwide healthcare revolution"
+            title="Our Core Values"
+            subtitle="The principles behind every delivery and every doctor consultation"
+          />
+          <div className="grid grid-4">
+            {values.map((value, index) => (
+              <FeatureCard key={index} icon={value.icon} title={value.title} description={value.description} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHeader
+            title="Our Journey"
+            subtitle={`From launch in ${SITE_INFO.launchDate} to building India's tier 2 & 3 healthcare network`}
           />
           <div className="timeline">
             {timeline.map((item, index) => (
@@ -170,18 +180,17 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2 className="cta-title">Join Us in Transforming Healthcare</h2>
+            <h2 className="cta-title">Experience Sneheal in Your City</h2>
             <p className="cta-subtitle">
-              Whether you're a patient, caregiver, or pharmacy partner, there's a place for you in the Sneheal community.
+              Download the app or contact us to learn about availability in your area.
             </p>
             <div className="cta-buttons">
-              <Link to="/services">
-                <Button variant="primary" size="large">Explore Services</Button>
-              </Link>
+              <a href="/#download-app">
+                <Button variant="primary" size="large">Download App</Button>
+              </a>
               <Link to="/contact">
                 <Button variant="outline" size="large">Contact Us</Button>
               </Link>
