@@ -45,7 +45,7 @@ const ContactPage = () => {
   const faqs = [
     {
       question: 'How fast is Sneheal medicine delivery?',
-      answer: 'Sneheal targets 10-minute medicine delivery in supported tier 2 and tier 3 city areas. Delivery time may vary slightly based on location and order volume.'
+      answer: 'Sneheal offers fast medicine delivery in supported tier 2 and tier 3 city areas. Delivery time may vary slightly based on location and order volume.'
     },
     {
       question: 'How do I upload a prescription?',
@@ -189,10 +189,29 @@ const ContactPage = () => {
       </section>
 
       <section className="map-section">
-        <div className="map-placeholder">
-          <FiMapPin size={48} />
-          <h3>Our Office — {SITE_INFO.launchCity}</h3>
-          <p>{SITE_CONTACT.address}</p>
+        <div className="container">
+          <div className="map-header">
+            <h3 className="map-title">Our Office — {SITE_INFO.launchCity}</h3>
+            <p className="map-address">{SITE_CONTACT.address}</p>
+            <a
+              href={SITE_CONTACT.mapLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="map-directions-link"
+            >
+              Get directions on Google Maps
+            </a>
+          </div>
+          <div className="map-embed-wrapper">
+            <iframe
+              title="Sneheal office location in Solapur"
+              src={SITE_CONTACT.mapEmbedUrl}
+              className="map-embed"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </section>
 

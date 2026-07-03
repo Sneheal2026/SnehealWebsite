@@ -4,7 +4,7 @@ import { FaGooglePlay, FaApple } from 'react-icons/fa';
 import { FiClock, FiUpload, FiUserCheck, FiHeadphones, FiCheckCircle, FiSmartphone } from 'react-icons/fi';
 import Button from '../components/Button';
 import SectionHeader from '../components/SectionHeader';
-import { FeatureCard, TestimonialCard } from '../components/Cards';
+import { FeatureCard } from '../components/Cards';
 import { SITE_INFO, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
 import '../styles/pages/HomePage.css';
 
@@ -12,8 +12,8 @@ const HomePage = () => {
   const features = [
     {
       icon: <FiClock size={26} />,
-      title: '10-Min Delivery',
-      description: 'Fast doorstep delivery built for tier 2 & 3 cities.'
+      title: 'Fast Delivery',
+      description: 'Quick doorstep delivery built for tier 2 & 3 cities.'
     },
     {
       icon: <FiUpload size={26} />,
@@ -32,33 +32,12 @@ const HomePage = () => {
     }
   ];
 
-  const howItWorks = [
-    { step: '1', title: 'Search or Upload', desc: 'Find medicines or upload your prescription.' },
-    { step: '2', title: 'Doctor Checks', desc: 'Verified doctors review & guide your order.' },
-    { step: '3', title: '10-Min Delivery', desc: 'Genuine medicines delivered to your door.' }
-  ];
-
-  const testimonials = [
-    {
-      quote: 'Other apps take hours in Solapur. Sneheal delivered in 10 minutes and the doctor confirmed the prescription.',
-      author: 'Rahul Kulkarni',
-      role: 'Solapur'
-    },
-    {
-      quote: 'Prescription upload is easy and medicines are genuine. Doctor support when I had questions was excellent.',
-      author: 'Sneha Patil',
-      role: 'Regular User'
-    }
-  ];
-
   return (
     <div className="home-page">
-      {/* Hero */}
       <section className="hero">
         <div className="container hero-inner">
-          <span className="hero-badge">Launched {SITE_INFO.launchDate} · {SITE_INFO.launchCity}</span>
           <h1 className="hero-title">
-            Medicines in <span className="hero-highlight">10 Minutes</span>
+            Fast, Reliable <span className="hero-highlight">Medicine Delivery</span>
           </h1>
           <p className="hero-subtitle">
             India's medicine delivery app for tier 2 & 3 cities. Order, upload prescriptions, and get doctor-backed care — faster than the big apps.
@@ -72,14 +51,13 @@ const HomePage = () => {
             </Link>
           </div>
           <div className="hero-stats">
-            <div className="hero-stat"><strong>10 Min</strong><span>Delivery</span></div>
+            <div className="hero-stat"><strong>Fast</strong><span>Delivery</span></div>
             <div className="hero-stat"><strong>24/7</strong><span>Doctor Support</span></div>
             <div className="hero-stat"><strong>100%</strong><span>Verified Supply</span></div>
           </div>
         </div>
       </section>
 
-      {/* Features */}
       <section className="home-section">
         <div className="container">
           <SectionHeader
@@ -94,20 +72,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* How it works + Partners */}
       <section className="home-section home-section--alt">
         <div className="container">
-          <SectionHeader title="How It Works" subtitle="Three steps from prescription to doorstep." />
-          <div className="steps-row">
-            {howItWorks.map((s, i) => (
-              <div key={i} className="step-item">
-                <span className="step-badge">{s.step}</span>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </div>
-            ))}
-          </div>
-
           <div className="partners-strip">
             <span className="partners-label">Verified partners</span>
             <div className="partners-chips">
@@ -121,19 +87,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="home-section">
-        <div className="container">
-          <SectionHeader title="Trusted Locally" subtitle="What users in tier 2 & 3 cities are saying." />
-          <div className="grid grid-2 home-testimonials">
-            {testimonials.map((t, i) => (
-              <TestimonialCard key={i} quote={t.quote} author={t.author} role={t.role} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Download */}
       <section className="download-section" id="download-app">
         <div className="container">
           <div className="download-panel">

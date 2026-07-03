@@ -16,8 +16,8 @@ const ServicesPage = () => {
   const services = [
     {
       icon: <FiClock size={28} />,
-      title: '10-Minute Medicine Delivery',
-      description: 'Order medicines and get them delivered in approximately 10 minutes — designed for tier 2 and tier 3 cities where other apps are too slow.',
+      title: 'Fast Medicine Delivery',
+      description: 'Order medicines and get them delivered quickly — designed for tier 2 and tier 3 cities where other apps are too slow.',
       link: { url: '/#download-app', text: 'Download App →' }
     },
     {
@@ -120,7 +120,7 @@ const ServicesPage = () => {
             <div className="services-info-card">
               <h3 className="info-card-title">For Patients & Families</h3>
               <ul className="info-list">
-                <li>10-minute medicine delivery in supported areas</li>
+                <li>Fast medicine delivery in supported areas</li>
                 <li>Easy prescription upload and medicine search</li>
                 <li>Verified doctors review your medicines</li>
                 <li>On-demand doctor support for health queries</li>
@@ -144,7 +144,7 @@ const ServicesPage = () => {
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2 className="cta-title">Ready to Order Medicines in 10 Minutes?</h2>
+            <h2 className="cta-title">Ready for Fast Medicine Delivery?</h2>
             <p className="cta-subtitle">
               Download the Sneheal app or contact us to check availability in your city.
             </p>

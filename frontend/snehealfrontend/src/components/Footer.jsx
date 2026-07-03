@@ -38,7 +38,7 @@ const Footer = () => {
           <div className="footer-column">
             <h4 className="footer-heading">App Services</h4>
             <ul className="footer-links">
-              <li><FooterNavLink to="/services">10-Min Delivery</FooterNavLink></li>
+              <li><FooterNavLink to="/services">Fast Delivery</FooterNavLink></li>
               <li><FooterNavLink to="/services">Prescription Upload</FooterNavLink></li>
               <li><FooterNavLink to="/services">Verified Doctors</FooterNavLink></li>
               <li><FooterNavLink to="/services">Health Query Support</FooterNavLink></li>

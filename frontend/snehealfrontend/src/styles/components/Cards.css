@@ -49,43 +49,6 @@
   line-height: var(--line-height-relaxed);
 }
 
-/* Testimonial Card */
-.testimonial-card {
-  background-color: var(--color-bg-white);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-light);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.testimonial-quote {
-  font-size: var(--font-size-md);
-  color: var(--color-text-medium);
-  line-height: var(--line-height-relaxed);
-  font-style: italic;
-  margin-bottom: var(--spacing-lg);
-}
-
-.testimonial-author {
-  border-top: 1px solid var(--color-border-light);
-  padding-top: var(--spacing-md);
-}
-
-.testimonial-name {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-dark);
-  margin-bottom: var(--spacing-xs);
-}
-
-.testimonial-role {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-light);
-}
-
 /* Service Card */
 .service-card {
   background-color: var(--color-bg-white);
@@ -144,34 +107,10 @@
   color: var(--color-primary);
 }
 
-/* Stat Card */
-.stat-card {
-  text-align: center;
-  padding: var(--spacing-xl);
-}
-
-.stat-card-number {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-sm);
-  line-height: 1;
-}
-
-.stat-card-label {
-  font-size: var(--font-size-base);
-  color: var(--color-text-light);
-  font-weight: var(--font-weight-medium);
-}
 
 @media (max-width: 768px) {
   .feature-card,
-  .testimonial-card,
   .service-card {
     padding: var(--spacing-lg);
-  }
-  
-  .stat-card-number {
-    font-size: var(--font-size-3xl);
   }
 }

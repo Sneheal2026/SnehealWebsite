@@ -18,7 +18,7 @@ const AboutPage = () => {
     {
       icon: <FiHeart size={32} />,
       title: 'Patient-First',
-      description: 'Every feature — from 10-minute delivery to doctor consultations — puts patient health first.'
+      description: 'Every feature — from fast delivery to doctor consultations — puts patient health first.'
     },
     {
       icon: <FiTarget size={32} />,
@@ -41,7 +41,7 @@ const AboutPage = () => {
     {
       year: 'May 2026',
       title: 'Official Launch',
-      description: `Sneheal launched in ${SITE_INFO.launchCity} — bringing 10-minute medicine delivery, prescription upload, and verified doctor support to tier 2 and tier 3 cities.`
+      description: `Sneheal launched in ${SITE_INFO.launchCity} — bringing fast medicine delivery, prescription upload, and verified doctor support to tier 2 and tier 3 cities.`
     },
     {
       year: '2026',
@@ -71,7 +71,7 @@ const AboutPage = () => {
           <span className="page-badge">Launched {SITE_INFO.launchDate}</span>
           <h1 className="about-title">About Sneheal</h1>
           <p className="about-subtitle">
-            Sneheal is a 10-minute medicine delivery app built for tier 2 and tier 3 cities — where major platforms take too long or do not reach customers properly.
+            Sneheal is a fast medicine delivery app built for tier 2 and tier 3 cities — where major platforms take too long or do not reach customers properly.
           </p>
         </div>
       </section>
@@ -88,7 +88,7 @@ const AboutPage = () => {
             <div className="vision-mission-card">
               <h2 className="vision-mission-title">Our Mission</h2>
               <p className="vision-mission-text">
-                To deliver medicines in 10 minutes, enable easy prescription uploads, and connect customers with verified doctors who review medicines and provide health guidance — all through one trusted app, starting from Solapur, Maharashtra.
+                To deliver medicines quickly and reliably, enable easy prescription uploads, and connect customers with verified doctors who review medicines and provide health guidance — all through one trusted app, starting from Solapur, Maharashtra.
               </p>
             </div>
           </div>
@@ -107,13 +107,13 @@ const AboutPage = () => {
                 In cities like Solapur and across tier 2 and tier 3 India, patients frequently wait hours for medicine delivery — or find that popular apps do not serve their area properly. Sneheal was built specifically to solve this problem.
               </p>
               <p>
-                We combine 10-minute delivery, prescription upload, verified medicine distributors, and on-call doctor support into one platform. Our doctors check patient medicines, recommend proper healthcare, and are available whenever you have a health-related question.
+                We combine fast delivery, prescription upload, verified medicine distributors, and on-call doctor support into one platform. Our doctors check patient medicines, recommend proper healthcare, and are available whenever you have a health-related question.
               </p>
             </div>
             <div className="accessibility-stats">
               <div className="accessibility-stat">
-                <div className="stat-number">10 Min</div>
-                <div className="stat-label">Target delivery time in supported areas</div>
+                <div className="stat-number">Fast</div>
+                <div className="stat-label">Reliable delivery in supported areas</div>
               </div>
               <div className="accessibility-stat">
                 <div className="stat-number">100%</div>

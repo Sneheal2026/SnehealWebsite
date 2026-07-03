@@ -12,18 +12,6 @@ const FeatureCard = ({ icon, title, description }) => {
   );
 };
 
-const TestimonialCard = ({ quote, author, role }) => {
-  return (
-    <div className="testimonial-card">
-      <p className="testimonial-quote">"{quote}"</p>
-      <div className="testimonial-author">
-        <p className="testimonial-name">{author}</p>
-        <p className="testimonial-role">{role}</p>
-      </div>
-    </div>
-  );
-};
-
 const ServiceCard = ({ icon, title, description, link }) => {
   return (
     <div className="service-card">
@@ -39,13 +27,4 @@ const ServiceCard = ({ icon, title, description, link }) => {
   );
 };
 
-const StatCard = ({ number, label }) => {
-  return (
-    <div className="stat-card">
-      <div className="stat-card-number">{number}</div>
-      <p className="stat-card-label">{label}</p>
-    </div>
-  );
-};
-
-export { FeatureCard, TestimonialCard, ServiceCard, StatCard };
+export { FeatureCard, ServiceCard };
