@@ -87,8 +87,8 @@ const Footer = () => {
             © {currentYear} Sneheal. All rights reserved.
           </p>
           <div className="footer-bottom-links">
-            <Link to="/" className="footer-bottom-link" onClick={() => scrollToTop('smooth')}>Privacy Policy</Link>
-            <Link to="/" className="footer-bottom-link" onClick={() => scrollToTop('smooth')}>Terms of Service</Link>
+            <FooterNavLink to="/privacy-policy">Privacy Policy</FooterNavLink>
+            <Link to="/contact" className="footer-bottom-link" onClick={() => scrollToTop('smooth')}>Terms of Service</Link>
           </div>
         </div>
       </div>
