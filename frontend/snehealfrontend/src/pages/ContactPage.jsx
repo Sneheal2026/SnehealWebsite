@@ -53,7 +53,7 @@ const ContactPage = () => {
     },
     {
       question: 'Are the medicines genuine?',
-      answer: 'Yes. Sneheal works with verified distributors including Baldawa Enterprises and licensed pharmacy partners. All medicines go through quality checks before delivery.'
+      answer: 'Yes. Sneheal works with verified distributors and licensed pharmacy partners. All medicines go through quality checks before delivery.'
     },
     {
       question: 'Can I talk to a doctor through Sneheal?',

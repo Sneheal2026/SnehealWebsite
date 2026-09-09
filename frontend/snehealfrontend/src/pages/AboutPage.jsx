@@ -28,7 +28,7 @@ const AboutPage = () => {
     {
       icon: <FiAward size={32} />,
       title: 'Genuine Medicines',
-      description: 'Only verified distributors and licensed partners like Baldawa Enterprises supply our medicines.'
+      description: 'Only verified distributors and licensed partners supply our medicines.'
     },
     {
       icon: <FiUsers size={32} />,
@@ -46,7 +46,7 @@ const AboutPage = () => {
     {
       year: '2026',
       title: 'Verified Distribution Network',
-      description: 'Partnered with trusted distributors including Baldawa Enterprises and regional licensed pharmacies for genuine medicine supply.'
+      description: 'Partnered with trusted distributors and regional licensed pharmacies for genuine medicine supply.'
     },
     {
       year: 'Next',

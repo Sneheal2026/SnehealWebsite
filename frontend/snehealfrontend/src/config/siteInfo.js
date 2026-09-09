@@ -20,7 +20,7 @@ export const SITE_INFO = {
 
 export const VERIFIED_DISTRIBUTORS = [
   {
-    name: 'Baldawa Enterprises',
+    name: 'Verified Medicine Distributor',
     role: 'Verified Medicine Distributor',
     description: 'Trusted supply partner ensuring genuine medicines reach customers on time.',
   },
