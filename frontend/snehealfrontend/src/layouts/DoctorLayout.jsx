@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import DoctorSiteHomeLink from '../components/doctor/DoctorSiteHomeLink';
 import '../styles/doctor/doctor-portal.css';
 
 const DoctorLayout = () => {
@@ -11,6 +12,7 @@ const DoctorLayout = () => {
           <span className="doctor-topbar__subtitle">Doctor portal</span>
         </div>
         <nav className="doctor-topbar__nav" aria-label="Doctor portal">
+          <DoctorSiteHomeLink variant="topbar" />
           <NavLink
             to="/doctor/dashboard"
             className={({ isActive }) =>

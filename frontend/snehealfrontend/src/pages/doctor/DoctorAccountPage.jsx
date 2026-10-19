@@ -9,7 +9,7 @@ const DoctorAccountPage = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/doctor/login', { replace: true });
+    navigate('/', { replace: true });
   };
 
   return (

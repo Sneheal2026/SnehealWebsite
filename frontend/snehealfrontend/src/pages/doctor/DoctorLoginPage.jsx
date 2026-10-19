@@ -6,6 +6,7 @@ import { useDoctorAuth } from '../../context/DoctorAuthContext';
 import { ApiError } from '../../lib/apiClient';
 import { getOtpFromSendOtpResponse, sendOtp, verifyOtp } from '../../lib/authService';
 import { resolveAuthRoute } from '../../lib/resolveAuthRoute';
+import DoctorSiteHomeLink from '../../components/doctor/DoctorSiteHomeLink';
 import '../../styles/doctor/doctor-portal.css';
 
 function isValidIndianMobile(digits) {
@@ -74,7 +75,9 @@ const DoctorLoginPage = () => {
 
   return (
     <div className="doctor-shell doctor-main--centered">
-      <div className="doctor-card">
+      <div className="doctor-auth-stack">
+        <DoctorSiteHomeLink />
+        <div className="doctor-card">
         <h1 className="doctor-card__title">Doctor sign in</h1>
         <p className="doctor-card__lead">
           Use the mobile number registered with Sneheal. We will send a one-time password.
@@ -146,6 +149,7 @@ const DoctorLoginPage = () => {
             </Button>
           </form>
         )}
+        </div>
       </div>
     </div>
   );

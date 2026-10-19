@@ -6,6 +6,7 @@ import { DoctorRegisterOnly } from '../../components/doctor/DoctorRouteGuards';
 import { useDoctorAuth } from '../../context/DoctorAuthContext';
 import { ApiError } from '../../lib/apiClient';
 import { completeRegistration } from '../../lib/authService';
+import DoctorSiteHomeLink from '../../components/doctor/DoctorSiteHomeLink';
 import '../../styles/doctor/doctor-portal.css';
 
 const LANGUAGE_OPTIONS = [
@@ -65,7 +66,9 @@ const DoctorRegisterPage = () => {
   return (
     <DoctorRegisterOnly>
       <div className="doctor-shell doctor-main--centered">
-        <div className="doctor-card" style={{ maxWidth: 560 }}>
+        <div className="doctor-auth-stack" style={{ maxWidth: 560 }}>
+          <DoctorSiteHomeLink />
+          <div className="doctor-card" style={{ maxWidth: 560 }}>
           <h1 className="doctor-card__title">Complete your profile</h1>
           <p className="doctor-card__lead">
             Add your clinic details to access the doctor dashboard on the web.
@@ -133,6 +136,7 @@ const DoctorRegisterPage = () => {
               {loading ? 'Saving…' : 'Complete registration'}
             </Button>
           </form>
+          </div>
         </div>
       </div>
     </DoctorRegisterOnly>
