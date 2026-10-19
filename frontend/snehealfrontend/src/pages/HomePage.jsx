@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGooglePlay, FaApple } from 'react-icons/fa';
+import { FaGooglePlay } from 'react-icons/fa';
 import { FiClock, FiUpload, FiUserCheck, FiHeadphones, FiCheckCircle, FiSmartphone } from 'react-icons/fi';
 import Button from '../components/Button';
 import SectionHeader from '../components/SectionHeader';
 import { FeatureCard } from '../components/Cards';
-import { SITE_INFO, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
+import { PLAY_STORE_URL, SITE_INFO, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
 import '../styles/pages/HomePage.css';
 
 const HomePage = () => {
@@ -97,22 +97,23 @@ const HomePage = () => {
                 Order medicines, upload prescriptions, and talk to verified doctors — launched {SITE_INFO.launchDate} from {SITE_INFO.launchCity}.
               </p>
               <div className="store-badges">
-                <a href="/contact" className="store-badge store-badge--play" aria-label="Get on Google Play">
+                <a
+                  href={PLAY_STORE_URL}
+                  className="store-badge store-badge--play"
+                  aria-label="Get Sneheal on Google Play"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FaGooglePlay className="store-badge-icon" />
                   <span className="store-badge-text">
                     <small>GET IT ON</small>
                     Google Play
                   </span>
                 </a>
-                <a href="/contact" className="store-badge store-badge--apple" aria-label="Download on App Store">
-                  <FaApple className="store-badge-icon" />
-                  <span className="store-badge-text">
-                    <small>Download on the</small>
-                    App Store
-                  </span>
-                </a>
               </div>
-              <p className="download-hint">Contact us for download links & city availability.</p>
+              <p className="download-hint">
+                Available on Google Play. Contact us for city availability.
+              </p>
             </div>
             <div className="download-visual">
               <div className="phone-frame">

@@ -65,7 +65,8 @@ const ContactPage = () => {
     },
     {
       question: 'How do I download the Sneheal app?',
-      answer: 'Contact us via phone or email for app download links. We will guide you based on your device and city availability.'
+      answer:
+        'Download Sneheal free on Google Play for Android. Search for “Sneheal” on the Play Store or use the link on our homepage. Contact us if you need help with city availability.'
     }
   ];
 

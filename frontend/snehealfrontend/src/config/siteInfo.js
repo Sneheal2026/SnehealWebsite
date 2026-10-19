@@ -9,6 +9,9 @@ export const SITE_CONTACT = {
     'https://www.google.com/maps/search/?api=1&query=Ashoka+Chowk,+Solapur,+Maharashtra+413003',
 };
 
+export const PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=com.sneheal.app&hl=en_IN';
+
 export const SITE_INFO = {
   name: 'Sneheal',
   tagline: 'Fast Medicine Delivery',
