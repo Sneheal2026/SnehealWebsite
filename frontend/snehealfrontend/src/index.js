@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import './styles/global.css';
 import './styles/layout.css';
+import './styles/doctor/doctor-portal.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

@@ -66,6 +66,15 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li className="navbar-item">
+              <Link
+                to="/doctor/login"
+                className={`navbar-link ${location.pathname.startsWith('/doctor') ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Doctors
+              </Link>
+            </li>
             <li className="navbar-item navbar-cta">
               <a href="#download-app" className="btn btn-primary btn-small" onClick={closeMenu}>
                 Download App
