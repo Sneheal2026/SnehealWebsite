@@ -5,6 +5,10 @@ import { AdminGuestOnly, AdminRequireAuth } from '../../components/admin/AdminRo
 import AdminLayout from '../../layouts/AdminLayout';
 import AdminLoginPage from './AdminLoginPage';
 import AdminDashboardPage from './AdminDashboardPage';
+import AdminDoctorsPage from './AdminDoctorsPage';
+import AdminDeliveryAgentsPage from './AdminDeliveryAgentsPage';
+import AdminOrdersPage from './AdminOrdersPage';
+import AdminPrescriptionsPage from './AdminPrescriptionsPage';
 import AdminPlaceholderPage from './AdminPlaceholderPage';
 
 const AdminPortal = () => {
@@ -26,46 +30,10 @@ const AdminPortal = () => {
           <Route element={<AdminLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<AdminDashboardPage />} />
-            <Route
-              path="doctors"
-              element={
-                <AdminPlaceholderPage
-                  title="Doctor Approvals & Verification"
-                  description="Review medical council registrations, clinic details, and approve or reject doctor signups."
-                  moduleName="Doctor Approvals"
-                />
-              }
-            />
-            <Route
-              path="agents"
-              element={
-                <AdminPlaceholderPage
-                  title="Delivery Partner Approvals"
-                  description="Inspect Aadhar verification, driving licenses, and vehicle credentials for Sneheal delivery personnel."
-                  moduleName="Delivery Fleet"
-                />
-              }
-            />
-            <Route
-              path="orders"
-              element={
-                <AdminPlaceholderPage
-                  title="Orders & Sales Management"
-                  description="Real-time order statuses, Razorpay and COD settlement records, and delivery fulfillment pipeline."
-                  moduleName="Orders Desk"
-                />
-              }
-            />
-            <Route
-              path="prescriptions"
-              element={
-                <AdminPlaceholderPage
-                  title="Prescription Processing"
-                  description="Prescription scans uploaded by customers, automated OCR extraction results, and doctor review logs."
-                  moduleName="Prescriptions"
-                />
-              }
-            />
+            <Route path="doctors" element={<AdminDoctorsPage />} />
+            <Route path="agents" element={<AdminDeliveryAgentsPage />} />
+            <Route path="orders" element={<AdminOrdersPage />} />
+            <Route path="prescriptions" element={<AdminPrescriptionsPage />} />
             <Route
               path="catalog"
               element={

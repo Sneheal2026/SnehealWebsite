@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchAdminStats } from '../../lib/adminAuthService';
+import { fetchAdminStats, getCachedAdminStats } from '../../lib/adminAuthService';
 import {
   FiUsers,
   FiUserCheck,
@@ -14,8 +14,9 @@ import {
 } from 'react-icons/fi';
 
 const AdminDashboardPage = () => {
-  const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const initialStats = getCachedAdminStats();
+  const [stats, setStats] = useState(initialStats);
+  const [loading, setLoading] = useState(!initialStats);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
 
@@ -24,7 +25,7 @@ const AdminDashboardPage = () => {
     setError('');
 
     try {
-      const data = await fetchAdminStats();
+      const data = await fetchAdminStats(isManualRefresh);
       setStats(data);
     } catch (err) {
       setError(err.message || 'Failed to load live metrics from SnehealApp2026.');
@@ -35,8 +36,10 @@ const AdminDashboardPage = () => {
   };
 
   useEffect(() => {
-    loadStats();
-  }, []);
+    if (!initialStats) {
+      loadStats(false);
+    }
+  }, [initialStats]);
 
   return (
     <div>

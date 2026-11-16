@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import {
@@ -10,11 +10,14 @@ import {
   FiPackage,
   FiLogOut,
   FiExternalLink,
+  FiMenu,
+  FiX,
 } from 'react-icons/fi';
 import '../styles/admin/admin-portal.css';
 
 const AdminLayout = () => {
   const { adminUser, logout } = useAdminAuth();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -22,19 +25,48 @@ const AdminLayout = () => {
     navigate('/admin/login', { replace: true });
   };
 
+  const closeMobileNav = () => {
+    setMobileNavOpen(false);
+  };
+
   return (
     <div className="admin-shell">
+      {/* Mobile Drawer Overlay Backdrop */}
+      {mobileNavOpen && (
+        <div
+          className="admin-sidebar-backdrop"
+          onClick={closeMobileNav}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="admin-sidebar" aria-label="Admin Navigation">
+      <aside
+        className={`admin-sidebar${mobileNavOpen ? ' is-open' : ''}`}
+        aria-label="Admin Navigation"
+      >
         <div className="admin-sidebar__header">
-          <span className="admin-sidebar__logo">Sneheal</span>
-          <span className="admin-sidebar__badge">Admin</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span className="admin-sidebar__logo">Sneheal</span>
+            <span className="admin-sidebar__badge">Admin</span>
+          </div>
+
+          {/* Close button inside mobile sidebar */}
+          <button
+            type="button"
+            className="admin-mobile-close-btn"
+            onClick={closeMobileNav}
+            aria-label="Close navigation menu"
+          >
+            <FiX size={20} />
+          </button>
         </div>
 
         <nav className="admin-sidebar__nav">
           <NavLink
             to="/admin/dashboard"
             className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
+            onClick={closeMobileNav}
             end
           >
             <FiGrid size={18} />
@@ -44,6 +76,7 @@ const AdminLayout = () => {
           <NavLink
             to="/admin/doctors"
             className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
+            onClick={closeMobileNav}
           >
             <FiUserCheck size={18} />
             <span>Doctor Approvals</span>
@@ -52,14 +85,16 @@ const AdminLayout = () => {
           <NavLink
             to="/admin/agents"
             className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
+            onClick={closeMobileNav}
           >
             <FiTruck size={18} />
-            <span>Delivery Agents</span>
+            <span>Delivery Fleet</span>
           </NavLink>
 
           <NavLink
             to="/admin/orders"
             className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
+            onClick={closeMobileNav}
           >
             <FiShoppingBag size={18} />
             <span>Orders & Sales</span>
@@ -68,6 +103,7 @@ const AdminLayout = () => {
           <NavLink
             to="/admin/prescriptions"
             className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
+            onClick={closeMobileNav}
           >
             <FiFileText size={18} />
             <span>Prescriptions</span>
@@ -76,6 +112,7 @@ const AdminLayout = () => {
           <NavLink
             to="/admin/catalog"
             className={({ isActive }) => `admin-nav-item${isActive ? ' is-active' : ''}`}
+            onClick={closeMobileNav}
           >
             <FiPackage size={18} />
             <span>Pharmacy Catalog</span>
@@ -99,7 +136,22 @@ const AdminLayout = () => {
       {/* Main Area */}
       <div className="admin-main">
         <header className="admin-topbar">
-          <h1 className="admin-topbar__title">Sneheal Administration Portal</h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            {/* Hamburger Button on Mobile */}
+            <button
+              type="button"
+              className="admin-mobile-toggle"
+              onClick={() => setMobileNavOpen((prev) => !prev)}
+              aria-label="Toggle mobile menu"
+            >
+              <FiMenu size={22} />
+            </button>
+
+            <h1 className="admin-topbar__title">
+              <span className="admin-topbar__title--full">Sneheal Administration Portal</span>
+              <span className="admin-topbar__title--short">Sneheal Admin</span>
+            </h1>
+          </div>
 
           <div className="admin-topbar__actions">
             <div className="admin-user-pill">
@@ -122,7 +174,7 @@ const AdminLayout = () => {
             >
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                 <FiLogOut size={14} />
-                Sign Out
+                <span className="admin-logout-text">Sign Out</span>
               </span>
             </button>
           </div>
