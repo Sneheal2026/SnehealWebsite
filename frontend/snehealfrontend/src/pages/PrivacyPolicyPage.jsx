@@ -22,7 +22,7 @@ const PrivacyPolicyPage = () => {
         <div className="container">
           <p className="legal-eyebrow">Legal</p>
           <h1 className="legal-title">Privacy Policy</h1>
-          <p className="legal-meta">Sneheal Health Private Limited · Last updated {LAST_UPDATED}</p>
+          <p className="legal-meta">Sneheal Medtech · Last updated {LAST_UPDATED}</p>
         </div>
       </section>
 
@@ -30,7 +30,7 @@ const PrivacyPolicyPage = () => {
         <div className="container">
           <article className="legal-document">
             <p className="legal-intro">
-              Sneheal Health Private Limited (&quot;Sneheal,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), founded and owned by Shravan Bhaskar, operates the Sneheal mobile application and website (
+              Sneheal Medtech (&quot;Sneheal,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), founded and owned by Shravan Bhaskar, operates the Sneheal mobile application and website (
               <a href="https://www.sneheal.com" target="_blank" rel="noopener noreferrer">www.sneheal.com</a>
               ) (collectively, the &quot;Service&quot;). This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our Service.
             </p>
@@ -162,7 +162,7 @@ const PrivacyPolicyPage = () => {
               <h2>11. Contact Us</h2>
               <p>If you have any questions about this Privacy Policy or how we handle your information, please contact us at:</p>
               <div className="legal-contact-card">
-                <p><strong>Sneheal Health Private Limited</strong></p>
+                <p><strong>Sneheal Medtech</strong></p>
                 <p><strong>Founder &amp; Owner:</strong> Shravan Bhaskar</p>
                 <p>
                   Email:{' '}
