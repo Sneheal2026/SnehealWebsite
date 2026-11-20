@@ -22,7 +22,7 @@ export const SITE_INFO = {
   tagline: 'Fast Medicine Delivery',
   owner: 'Shravan Bhaskar',
   founder: 'Shravan Bhaskar',
-  legalEntity: 'Sneheal Medtech',
+  legalEntity: 'Sneheal Medtech Private Limited',
   launchDate: 'May 2026',
   launchCity: 'Solapur, Maharashtra',
   focus: 'Tier 2 & Tier 3 cities across India',
@@ -34,8 +34,8 @@ export const SITE_OWNER = {
   role: 'Founder & Owner',
   title: 'Owner and Founder of Sneheal',
   email: 'shravan.bhaskar@sneheal.com',
-  company: 'Sneheal Medtech',
-  bio: 'Shravan Bhaskar is the founder and owner of Sneheal. Driven by the mission to make quality healthcare accessible to everyone, Shravan established Sneheal (Sneheal Medtech) to provide fast medicine delivery, genuine pharmaceutical distribution, and verified doctor support across tier 2 and tier 3 cities in India, starting from Solapur, Maharashtra.',
+  company: 'Sneheal Medtech Private Limited',
+  bio: 'Shravan Bhaskar is the founder and owner of Sneheal. Driven by the mission to make quality healthcare accessible to everyone, Shravan established Sneheal (Sneheal Medtech Private Limited) to provide fast medicine delivery, genuine pharmaceutical distribution, and verified doctor support across tier 2 and tier 3 cities in India, starting from Solapur, Maharashtra.',
 };
 
 export const VERIFIED_DISTRIBUTORS = [
