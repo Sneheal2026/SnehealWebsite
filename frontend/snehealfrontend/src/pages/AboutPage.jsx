@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiTarget, FiHeart, FiUsers, FiAward } from 'react-icons/fi';
+import { FiTarget, FiHeart, FiUsers, FiAward, FiUser } from 'react-icons/fi';
 import Breadcrumb from '../components/Breadcrumb';
 import SectionHeader from '../components/SectionHeader';
 import { FeatureCard } from '../components/Cards';
 import Button from '../components/Button';
-import { SITE_INFO, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
+import { SITE_INFO, SITE_OWNER, VERIFIED_DISTRIBUTORS } from '../config/siteInfo';
 import '../styles/pages/AboutPage.css';
 
 const AboutPage = () => {
@@ -40,8 +40,8 @@ const AboutPage = () => {
   const timeline = [
     {
       year: 'May 2026',
-      title: 'Official Launch',
-      description: `Sneheal launched in ${SITE_INFO.launchCity} — bringing fast medicine delivery, prescription upload, and verified doctor support to tier 2 and tier 3 cities.`
+      title: 'Founded by Shravan Bhaskar',
+      description: `Sneheal was founded by owner Shravan Bhaskar in ${SITE_INFO.launchCity} — bringing fast medicine delivery, prescription upload, and verified doctor support to tier 2 and tier 3 cities.`
     },
     {
       year: '2026',
@@ -160,7 +160,52 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="founder">
+        <div className="container">
+          <SectionHeader
+            title="Leadership & Ownership"
+            subtitle="Meet the founder and owner leading Sneheal's mission"
+          />
+          <div className="founder-wrapper">
+            <div className="founder-card" itemScope itemType="https://schema.org/Person">
+              <div className="founder-header">
+                <div className="founder-avatar-box">
+                  <FiUser className="founder-avatar-icon" size={36} />
+                </div>
+                <div className="founder-title-block">
+                  <span className="founder-badge">Founder &amp; Owner</span>
+                  <h3 className="founder-name" itemProp="name">{SITE_OWNER.name}</h3>
+                  <p className="founder-role" itemProp="jobTitle">{SITE_OWNER.title}</p>
+                </div>
+              </div>
+              <div className="founder-body">
+                <p className="founder-text">
+                  <strong>{SITE_OWNER.name}</strong> is the owner and founder of Sneheal ({SITE_OWNER.company}). Driven by a mission to solve critical healthcare distribution gaps across India, Shravan established Sneheal starting from {SITE_INFO.launchCity} to bring fast, dependable medicine delivery and doctor-backed care to tier 2 and tier 3 cities.
+                </p>
+                <p className="founder-text">
+                  Under Shravan&apos;s leadership, Sneheal combines fast delivery, verified licensed pharmacy networks, seamless prescription verification, and 24/7 doctor support so that families outside major metros receive the same quality healthcare access as big cities.
+                </p>
+                <div className="founder-highlights">
+                  <div className="founder-highlight-item">
+                    <span className="founder-highlight-label">Company</span>
+                    <span className="founder-highlight-value">{SITE_OWNER.company}</span>
+                  </div>
+                  <div className="founder-highlight-item">
+                    <span className="founder-highlight-label">Ownership</span>
+                    <span className="founder-highlight-value">Shravan Bhaskar (Owner &amp; Founder)</span>
+                  </div>
+                  <div className="founder-highlight-item">
+                    <span className="founder-highlight-label">Headquarters</span>
+                    <span className="founder-highlight-value">{SITE_INFO.launchCity}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-light">
         <div className="container">
           <SectionHeader
             title="Our Journey"

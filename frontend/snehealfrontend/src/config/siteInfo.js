@@ -12,13 +12,30 @@ export const SITE_CONTACT = {
 export const PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.sneheal.app&hl=en_IN';
 
+export const SOCIAL_LINKS = {
+  x: 'https://x.com/Sneheal1?s=20',
+  instagram: 'https://www.instagram.com/sneheal__?avpt=MWVtY29zaHA2MHhpeA==',
+};
+
 export const SITE_INFO = {
   name: 'Sneheal',
   tagline: 'Fast Medicine Delivery',
+  owner: 'Shravan Bhaskar',
+  founder: 'Shravan Bhaskar',
+  legalEntity: 'Sneheal Health Private Limited',
   launchDate: 'May 2026',
   launchCity: 'Solapur, Maharashtra',
   focus: 'Tier 2 & Tier 3 cities across India',
   deliveryTime: 'fast and reliable',
+};
+
+export const SITE_OWNER = {
+  name: 'Shravan Bhaskar',
+  role: 'Founder & Owner',
+  title: 'Owner and Founder of Sneheal',
+  email: 'shravan.bhaskar@sneheal.com',
+  company: 'Sneheal Health Private Limited',
+  bio: 'Shravan Bhaskar is the founder and owner of Sneheal. Driven by the mission to make quality healthcare accessible to everyone, Shravan established Sneheal to provide fast medicine delivery, genuine pharmaceutical distribution, and verified doctor support across tier 2 and tier 3 cities in India, starting from Solapur, Maharashtra.',
 };
 
 export const VERIFIED_DISTRIBUTORS = [

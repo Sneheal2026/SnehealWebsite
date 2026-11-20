@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
-import { SITE_CONTACT, SITE_INFO } from '../config/siteInfo';
+import { FiMail, FiPhone, FiMapPin, FiInstagram } from 'react-icons/fi';
+import { FaXTwitter } from 'react-icons/fa6';
+import { SITE_CONTACT, SITE_INFO, SOCIAL_LINKS } from '../config/siteInfo';
 import { scrollToTop } from '../utils/scroll';
 import '../styles/components/Footer.css';
 
@@ -21,7 +22,7 @@ const Footer = () => {
           <div className="footer-column">
             <img src="/Sneheal-Logo.jpeg" alt="Sneheal Logo" className="footer-logo-image" />
             <p className="footer-tagline">
-              {SITE_INFO.tagline} for tier 2 & tier 3 cities. Genuine medicines, prescription upload, and verified doctor support — launched {SITE_INFO.launchDate} from {SITE_INFO.launchCity}.
+              {SITE_INFO.tagline} for tier 2 & tier 3 cities. Founded and owned by {SITE_INFO.owner} — launched {SITE_INFO.launchDate} from {SITE_INFO.launchCity}. Genuine medicines, prescription upload, and verified doctor support.
             </p>
           </div>
 
@@ -66,17 +67,23 @@ const Footer = () => {
           <div className="footer-column">
             <h4 className="footer-heading">Follow Us</h4>
             <div className="footer-social">
-              <a href="/" className="footer-social-link" aria-label="Facebook">
-                <FiFacebook size={20} />
+              <a
+                href={SOCIAL_LINKS.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-link"
+                aria-label="X (formerly Twitter)"
+              >
+                <FaXTwitter size={18} />
               </a>
-              <a href="/" className="footer-social-link" aria-label="Twitter">
-                <FiTwitter size={20} />
-              </a>
-              <a href="/" className="footer-social-link" aria-label="Instagram">
+              <a
+                href={SOCIAL_LINKS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-link"
+                aria-label="Instagram"
+              >
                 <FiInstagram size={20} />
-              </a>
-              <a href="/" className="footer-social-link" aria-label="LinkedIn">
-                <FiLinkedin size={20} />
               </a>
             </div>
           </div>
@@ -84,7 +91,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {currentYear} Sneheal. All rights reserved.
+            © {currentYear} Sneheal. Owned by {SITE_INFO.owner}. All rights reserved.
           </p>
           <div className="footer-bottom-links">
             <FooterNavLink to="/privacy-policy">Privacy Policy</FooterNavLink>
