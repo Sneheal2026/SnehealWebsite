@@ -237,6 +237,30 @@ export async function updateAdminOrderStatus(orderId, status) {
 }
 
 /**
+ * Update order prescription status ('verified', 'rejected', 'pending_verification')
+ */
+export async function updateAdminOrderPrescriptionStatus(orderId, status, reason = null) {
+  const result = await adminApiRequest(`/api/admin/orders/${orderId}/prescription-status`, {
+    method: 'PATCH',
+    body: { status, reason },
+  });
+
+  if (cachedOrders) {
+    cachedOrders = cachedOrders.map((ord) =>
+      ord.id === String(orderId) || ord.publicId === String(orderId)
+        ? {
+            ...ord,
+            prescriptionStatus: status,
+            prescriptionRejectedReason: reason,
+          }
+        : ord
+    );
+  }
+
+  return result;
+}
+
+/**
  * Fetch prescriptions list with client caching
  */
 export async function fetchAdminPrescriptions(forceRefresh = false) {

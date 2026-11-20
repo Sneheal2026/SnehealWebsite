@@ -4,6 +4,7 @@ import {
   getCachedAdminOrders,
   fetchAdminOrderDetails,
   updateAdminOrderStatus,
+  updateAdminOrderPrescriptionStatus,
 } from '../../lib/adminAuthService';
 import {
   FiShoppingBag,
@@ -39,6 +40,7 @@ const AdminOrdersPage = () => {
   const [modalDetails, setModalDetails] = useState(null);
   const [modalError, setModalError] = useState('');
   const [updatingStatus, setUpdatingStatus] = useState(false);
+  const [updatingRxStatus, setUpdatingRxStatus] = useState(false);
 
   const loadOrders = async (isManualRefresh = false) => {
     if (isManualRefresh) setRefreshing(true);
@@ -119,10 +121,49 @@ const AdminOrdersPage = () => {
     }
   };
 
+  // Change prescription verification status ('verified', 'rejected')
+  const handlePrescriptionStatusChange = async (orderId, newStatus, reason = null) => {
+    if (updatingRxStatus) return;
+    setUpdatingRxStatus(true);
+    setError('');
+
+    try {
+      await updateAdminOrderPrescriptionStatus(orderId, newStatus, reason);
+
+      setOrders((prev) =>
+        prev.map((o) =>
+          o.id === String(orderId) || o.publicId === String(orderId)
+            ? { ...o, prescriptionStatus: newStatus, prescriptionRejectedReason: reason }
+            : o
+        )
+      );
+
+      if (modalDetails) {
+        setModalDetails((prev) => ({
+          ...prev,
+          prescriptionStatus: newStatus,
+          prescriptionRejectedReason: reason,
+        }));
+      }
+
+      setToastMessage(
+        newStatus === 'verified'
+          ? '✓ Prescription verified successfully! Order is approved.'
+          : 'Prescription marked as rejected.'
+      );
+      setTimeout(() => setToastMessage(''), 4000);
+    } catch (err) {
+      setError(err.message || 'Failed to update prescription status.');
+    } finally {
+      setUpdatingRxStatus(false);
+    }
+  };
+
   // Counts for tabs
   const counts = useMemo(() => {
     return {
       all: orders.length,
+      rx_pending: orders.filter((o) => o.prescriptionStatus === 'pending_verification').length,
       delivered: orders.filter((o) => o.status === 'delivered').length,
       out_for_delivery: orders.filter((o) => o.status === 'out_for_delivery').length,
       confirmed: orders.filter((o) => o.status === 'confirmed').length,
@@ -135,7 +176,9 @@ const AdminOrdersPage = () => {
   const filteredOrders = useMemo(() => {
     return orders.filter((o) => {
       // Tab filter
-      if (activeTab !== 'all' && o.status !== activeTab) {
+      if (activeTab === 'rx_pending') {
+        if (o.prescriptionStatus !== 'pending_verification') return false;
+      } else if (activeTab !== 'all' && o.status !== activeTab) {
         return false;
       }
       // Search filter
@@ -231,6 +274,25 @@ const AdminOrdersPage = () => {
           <FiShoppingBag size={16} />
           <span>All Orders</span>
           <span className="admin-tab-badge">{counts.all}</span>
+        </button>
+
+        <button
+          type="button"
+          className={`admin-tab-btn${activeTab === 'rx_pending' ? ' is-active' : ''}`}
+          onClick={() => setActiveTab('rx_pending')}
+        >
+          <FiAlertCircle size={16} color={counts.rx_pending > 0 ? '#DC2626' : undefined} />
+          <span>Rx Review</span>
+          <span
+            className="admin-tab-badge"
+            style={
+              counts.rx_pending > 0
+                ? { backgroundColor: '#FEE2E2', color: '#DC2626', fontWeight: 800 }
+                : {}
+            }
+          >
+            {counts.rx_pending}
+          </span>
         </button>
 
         <button
@@ -432,6 +494,53 @@ const AdminOrdersPage = () => {
 
                   {/* Status & Payment Badges */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                    {ord.prescriptionStatus && ord.prescriptionStatus !== 'not_required' && (
+                      <span
+                        style={{
+                          padding: '4px 8px',
+                          borderRadius: '12px',
+                          fontSize: '0.75rem',
+                          fontWeight: 700,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          backgroundColor:
+                            ord.prescriptionStatus === 'verified'
+                              ? '#ECFDF5'
+                              : ord.prescriptionStatus === 'rejected'
+                              ? '#FEF2F2'
+                              : '#FFFBEB',
+                          color:
+                            ord.prescriptionStatus === 'verified'
+                              ? '#059669'
+                              : ord.prescriptionStatus === 'rejected'
+                              ? '#DC2626'
+                              : '#D97706',
+                          border: `1px solid ${
+                            ord.prescriptionStatus === 'verified'
+                              ? '#A7F3D0'
+                              : ord.prescriptionStatus === 'rejected'
+                              ? '#FECACA'
+                              : '#FDE68A'
+                          }`,
+                        }}
+                      >
+                        {ord.prescriptionStatus === 'verified' ? (
+                          <>
+                            <FiCheckCircle size={11} /> Rx Verified
+                          </>
+                        ) : ord.prescriptionStatus === 'rejected' ? (
+                          <>
+                            <FiXCircle size={11} /> Rx Rejected
+                          </>
+                        ) : (
+                          <>
+                            <FiAlertCircle size={11} /> Rx Review Needed
+                          </>
+                        )}
+                      </span>
+                    )}
+
                     <span
                       className={`admin-badge-payment ${
                         ord.payment.status === 'paid'
@@ -720,6 +829,224 @@ const AdminOrdersPage = () => {
                       )}
                     </div>
                   </div>
+
+                  {/* Doctor Prescription Verification Card */}
+                  {modalDetails.prescriptionUrl ? (
+                    <div
+                      style={{
+                        backgroundColor:
+                          modalDetails.prescriptionStatus === 'verified'
+                            ? '#ECFDF5'
+                            : modalDetails.prescriptionStatus === 'rejected'
+                            ? '#FEF2F2'
+                            : '#FFFBEB',
+                        border: `1.5px solid ${
+                          modalDetails.prescriptionStatus === 'verified'
+                            ? '#A7F3D0'
+                            : modalDetails.prescriptionStatus === 'rejected'
+                            ? '#FECACA'
+                            : '#FDE68A'
+                        }`,
+                        borderRadius: '8px',
+                        padding: '16px',
+                        marginBottom: '18px',
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          marginBottom: '12px',
+                          flexWrap: 'wrap',
+                          gap: '8px',
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span
+                            style={{
+                              backgroundColor: '#DC2626',
+                              color: '#FFFFFF',
+                              padding: '2px 6px',
+                              borderRadius: '4px',
+                              fontSize: '0.72rem',
+                              fontWeight: 800,
+                            }}
+                          >
+                            Rx
+                          </span>
+                          <span style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0F172A' }}>
+                            Attached Doctor's Prescription
+                          </span>
+                        </div>
+
+                        {/* Status Badge */}
+                        <span
+                          style={{
+                            padding: '4px 10px',
+                            borderRadius: '12px',
+                            fontSize: '0.8rem',
+                            fontWeight: 700,
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            backgroundColor:
+                              modalDetails.prescriptionStatus === 'verified'
+                                ? '#D1FAE5'
+                                : modalDetails.prescriptionStatus === 'rejected'
+                                ? '#FEE2E2'
+                                : '#FEF3C7',
+                            color:
+                              modalDetails.prescriptionStatus === 'verified'
+                                ? '#065F46'
+                                : modalDetails.prescriptionStatus === 'rejected'
+                                ? '#991B1B'
+                                : '#92400E',
+                          }}
+                        >
+                          {modalDetails.prescriptionStatus === 'verified' ? (
+                            <>
+                              <FiCheckCircle size={13} /> Verified by Pharmacist
+                            </>
+                          ) : modalDetails.prescriptionStatus === 'rejected' ? (
+                            <>
+                              <FiXCircle size={13} /> Rejected
+                            </>
+                          ) : (
+                            <>
+                              <FiAlertCircle size={13} /> Verification Pending
+                            </>
+                          )}
+                        </span>
+                      </div>
+
+                      {/* Image Thumbnail and Actions */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          gap: '16px',
+                          alignItems: 'flex-start',
+                          flexWrap: 'wrap',
+                        }}
+                      >
+                        <a
+                          href={modalDetails.prescriptionUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Click to view full image in new tab"
+                          style={{
+                            display: 'block',
+                            position: 'relative',
+                            textDecoration: 'none',
+                          }}
+                        >
+                          <img
+                            src={modalDetails.prescriptionUrl}
+                            alt="Prescription Slip"
+                            style={{
+                              width: '120px',
+                              height: '120px',
+                              objectFit: 'cover',
+                              borderRadius: '6px',
+                              border: '1px solid #CBD5E1',
+                              boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                            }}
+                          />
+                          <span
+                            style={{
+                              position: 'absolute',
+                              bottom: '4px',
+                              right: '4px',
+                              backgroundColor: 'rgba(0,0,0,0.7)',
+                              color: '#fff',
+                              borderRadius: '4px',
+                              padding: '2px 6px',
+                              fontSize: '0.68rem',
+                              fontWeight: 600,
+                            }}
+                          >
+                            Open Full ↗
+                          </span>
+                        </a>
+
+                        <div style={{ flex: 1, minWidth: '220px' }}>
+                          <p
+                            style={{
+                              margin: '0 0 10px 0',
+                              fontSize: '0.85rem',
+                              color: '#475569',
+                              lineHeight: 1.45,
+                            }}
+                          >
+                            {modalDetails.prescriptionStatus === 'verified'
+                              ? 'This prescription is verified and approved. Customer app reflects verified status.'
+                              : modalDetails.prescriptionStatus === 'rejected'
+                              ? `Prescription was rejected. Reason: "${
+                                  modalDetails.prescriptionRejectedReason || 'Invalid document.'
+                                }"`
+                              : 'Review the prescription image to ensure doctor details, patient name, and medicines match the order.'}
+                          </p>
+
+                          {/* Verification Buttons */}
+                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handlePrescriptionStatusChange(modalDetails.id, 'verified')
+                              }
+                              disabled={
+                                updatingRxStatus ||
+                                modalDetails.prescriptionStatus === 'verified'
+                              }
+                              className="admin-btn-approve"
+                              style={{
+                                fontSize: '0.82rem',
+                                padding: '7px 14px',
+                                opacity:
+                                  modalDetails.prescriptionStatus === 'verified' ? 0.6 : 1,
+                              }}
+                            >
+                              <FiCheckCircle size={14} />
+                              {modalDetails.prescriptionStatus === 'verified'
+                                ? 'Verified ✓'
+                                : 'Verify Prescription'}
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const reason = window.prompt(
+                                  'Enter rejection reason for customer (e.g., Doctor stamp missing, blurred prescription):',
+                                  'Prescription invalid or doctor stamp missing'
+                                );
+                                if (reason) {
+                                  handlePrescriptionStatusChange(
+                                    modalDetails.id,
+                                    'rejected',
+                                    reason
+                                  );
+                                }
+                              }}
+                              disabled={
+                                updatingRxStatus ||
+                                modalDetails.prescriptionStatus === 'rejected'
+                              }
+                              className="admin-btn-reject"
+                              style={{
+                                fontSize: '0.82rem',
+                                padding: '7px 14px',
+                                opacity:
+                                  modalDetails.prescriptionStatus === 'rejected' ? 0.6 : 1,
+                              }}
+                            >
+                              <FiXCircle size={14} />
+                              Reject Prescription
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
 
                   {/* Items List Table */}
                   <h4 style={{ margin: '0 0 8px 0', fontSize: '0.95rem', color: '#0F172A' }}>
